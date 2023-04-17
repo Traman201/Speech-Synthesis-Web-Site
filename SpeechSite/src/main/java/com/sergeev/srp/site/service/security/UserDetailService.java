@@ -1,8 +1,8 @@
-package com.sergeev.srp.service.security;
+package com.sergeev.srp.site.service.security;
 
-import com.sergeev.srp.entity.site.SiteUser;
-import com.sergeev.srp.model.User;
-import com.sergeev.srp.repository.UserRepository;
+import com.sergeev.srp.site.entity.site.SiteUser;
+import com.sergeev.srp.site.model.User;
+import com.sergeev.srp.site.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

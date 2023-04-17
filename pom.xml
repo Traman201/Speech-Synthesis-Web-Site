@@ -16,6 +16,8 @@
 
     <modules>
         <module>SpeechSite</module>
+        <module>TTSModel/MaryTTS</module>
+        <module>Common</module>
     </modules>
 
     <properties>

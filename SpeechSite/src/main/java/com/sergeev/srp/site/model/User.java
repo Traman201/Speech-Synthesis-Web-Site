@@ -1,6 +1,6 @@
-package com.sergeev.srp.model;
+package com.sergeev.srp.site.model;
 
-import com.sergeev.srp.entity.site.SiteUser;
+import com.sergeev.srp.site.entity.site.SiteUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

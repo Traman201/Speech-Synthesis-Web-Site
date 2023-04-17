@@ -1,4 +1,4 @@
-package com.sergeev.srp.controller;
+package com.sergeev.srp.site.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

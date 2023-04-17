@@ -1,4 +1,4 @@
-package com.sergeev.srp.entity.site;
+package com.sergeev.srp.site.entity.site;
 
 import jakarta.persistence.*;
 import lombok.Getter;

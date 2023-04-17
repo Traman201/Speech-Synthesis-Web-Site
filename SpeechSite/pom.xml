@@ -74,6 +74,13 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <requiresUnpack>
+                        <dependency>
+                            <groupId>com.sergeev.srp.common</groupId>
+                            <artifactId>Common</artifactId>
+                        </dependency>
+                    </requiresUnpack>
+
                 </configuration>
                 <executions>
                     <execution>

@@ -19,4 +19,27 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.3.0</version>
+            <configuration>
+                <archive>
+                    <index>true</index>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                    </manifest>
+                    <manifestEntries>
+                        <mode>development</mode>
+                        <url>${project.url}</url>
+                        <key>value</key>
+                    </manifestEntries>
+                </archive>
+            </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

@@ -17,6 +17,12 @@
     <properties>
         <java.version>17</java.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>marytts</id>
+            <url>https://mlt.jfrog.io/artifactory/mlt-mvn-releases-local</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -37,6 +43,21 @@
             <groupId>com.sergeev.srp.common</groupId>
             <artifactId>Common</artifactId>
             <version>${parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.dfki.mary</groupId>
+            <artifactId>voice-cmu-slt-hsmm</artifactId>
+            <version>5.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.twmacinta</groupId>
+                    <artifactId>fast-md5</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>gov.nist.math</groupId>
+                    <artifactId>Jampack</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -62,6 +83,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <finalName>${project.artifactId}</finalName>
     </build>
 
 </project>

@@ -83,7 +83,7 @@
                 </executions>
             </plugin>
         </plugins>
-        <finalName>${project.artifactId}</finalName>
+        <finalName>mary-tts</finalName>
     </build>
 
 </project>

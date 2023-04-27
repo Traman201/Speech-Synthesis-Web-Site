@@ -6,18 +6,21 @@ import marytts.exceptions.SynthesisException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
 @RestController
+@RequestMapping("/")
 public class MainController {
 
     @Autowired
     TextToSpeechService speechService;
 
     @GetMapping
-    public byte[] synthesizeText(@RequestBody TextToSpeech textToSpeech) throws SynthesisException, IOException {
-        return speechService.textToSpeech(textToSpeech);
+    public TextToSpeech synthesizeText(@RequestBody TextToSpeech textToSpeech) throws SynthesisException, IOException {
+        textToSpeech.setSound(speechService.textToSpeech(textToSpeech));
+        return textToSpeech;
     }
 }

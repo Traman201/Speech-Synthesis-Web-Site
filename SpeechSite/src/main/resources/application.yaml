@@ -1,6 +1,6 @@
 ---
 mary-tts:
-  module-path: 127.0.0.1:8080/mary-tts
+  module-path: http://127.0.0.1:8080/mary-tts/
 spring:
   config:
     activate:

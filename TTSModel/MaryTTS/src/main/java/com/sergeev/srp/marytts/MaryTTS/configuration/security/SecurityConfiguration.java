@@ -12,7 +12,10 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 .anyRequest()
-                .anonymous();
+                .anonymous()
+                .and()
+                .csrf().disable().cors();
+
         return http.build();
     }
 }

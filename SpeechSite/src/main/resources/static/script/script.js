@@ -9,7 +9,8 @@ var hostname = window.location.origin
         data: JSON.stringify({"text" : $("#textInput").val()}),
         processData: false,
         success: function(data){
-    	     $("#audioOutput").attr("src", data);
+            var src = location.pathname.replace("synthesis","") + "synthesized/" + data;
+    	     $("#audioOutput").attr("src", src);
         }
     });
 }

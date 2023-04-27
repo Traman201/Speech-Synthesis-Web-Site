@@ -4,10 +4,7 @@ import com.sergeev.srp.common.model.TextToSpeech;
 import com.sergeev.srp.marytts.MaryTTS.Service.TextToSpeechService;
 import marytts.exceptions.SynthesisException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -18,9 +15,8 @@ public class MainController {
     @Autowired
     TextToSpeechService speechService;
 
-    @GetMapping
-    public TextToSpeech synthesizeText(@RequestBody TextToSpeech textToSpeech) throws SynthesisException, IOException {
-        textToSpeech.setSound(speechService.textToSpeech(textToSpeech));
-        return textToSpeech;
+    @PostMapping
+    public @ResponseBody TextToSpeech synthesizeText(@RequestBody TextToSpeech textToSpeech) throws SynthesisException, IOException {
+        return speechService.textToSpeech(textToSpeech);
     }
 }

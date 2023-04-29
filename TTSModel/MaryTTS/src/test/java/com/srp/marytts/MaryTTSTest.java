@@ -1,5 +1,6 @@
 package com.srp.marytts;
 
+import lombok.extern.log4j.Log4j2;
 import marytts.LocalMaryInterface;
 import marytts.MaryInterface;
 import marytts.exceptions.SynthesisException;
@@ -11,6 +12,8 @@ import javax.sound.sampled.LineUnavailableException;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
+
+@Log4j2
 public class MaryTTSTest {
 
     @Test

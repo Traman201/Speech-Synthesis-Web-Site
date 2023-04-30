@@ -1,7 +1,48 @@
-<div>
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="mainMaryTTS">
     <form>
         <div class="form-group">
-            <label></label>
+            <h5>Выбор языка</h5>
+            <select class="form-select form-select-lg mb-3" id="mary-tts-locale-select">
+                <option value="" disabled selected>Выберите язык</option>
+                <th:block th:each="locale : ${locales}">
+                    <option th:text="${locale.getNameForSite()}" th:value="${locale.getName()}"></option>
+                </th:block>
+            </select>
+        </div>
+        <div id="voice-select"></div>
+        <div class="form-group">
+            <h5>Аудио эффекты</h5>
+            <th:block th:each="effect : ${parameters.audioEffects}">
+                <h6 th:text="${effect.getName()}"></h6>
+                <th:block th:each="value : ${effect.effect}">
+                    <div class="slidecontainer">
+                        <label th:text="${value.getKey()}"></label>
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                    </div>
+                </th:block>
+
+
+            </th:block>
+        </div>
+        <div class="form-group">
+            <h5>Стиль</h5>
+            <th:block th:each="style : ${parameters.style}">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" th:value="${style}">
+                    <label class="form-check-label" th:text="${style}"></label>
+                </div>
+            </th:block>
         </div>
     </form>
+</div>
+
+
+<div class="form-group" th:fragment="maryTTSVoiceSelect">
+    <h5>Выбор голоса</h5>
+    <select class="form-select form-select-lg mb-3" id="mary-tts-voice-select">
+        <option value="" disabled selected>Выберите голос</option>
+        <th:block th:each="voice : ${voices}">
+            <option th:text="${voice.getNameForSite()}" th:value="${voice.getName}"></option>
+        </th:block>
+    </select>
 </div>

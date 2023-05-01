@@ -1,17 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="">
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
 <head>
-    <script src="http://localhost:35729/livereload.js"></script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    <th:block th:insert="~{parts/includes.html :: head}"></th:block>
     <title>Синтез речи</title>
 </head>
 <body>
@@ -25,12 +15,17 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <ul class="list-group">
-                        <li class="list-group-item active" aria-current="true">MaryTTS</li>
-                        <li class="list-group-item">Скрытая марковская модель</li>
+                    <ul class="list-group" id="systemSelector">
+                        <li class="list-group-item" id="mary-tts-select"
+                            aria-current="true" th:onclick="">MaryTTS
+                        </li>
+                        <li class="list-group-item" id="hmm-select" th:onclick="">Скрытая
+                            марковская
+                            модель
+                        </li>
                     </ul>
                 </div>
-                <div class="col" id="modelSettings">
+                <div class="col col-8" id="modelSettings">
 
                 </div>
             </div>
@@ -55,7 +50,8 @@
     </figure>
 
 </div>
-
-</body>
+<th:block th:insert="~{parts/includes.html :: body}"></th:block>
 <script type="text/javascript" th:src="@{/script/script.js}"></script>
+</body>
+
 </html>

@@ -1,7 +1,9 @@
 package com.sergeev.srp.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sergeev.srp.common.model.enums.Systems;
 import com.sergeev.srp.common.model.file.AudioFileMetadata;
+import com.sergeev.srp.common.model.marytts.MaryTTSParameters;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,11 +18,17 @@ public class TextToSpeech {
 
     AudioFileMetadata metadata;
 
+    MaryTTSParameters maryTTSParameters;
+
+    Systems system;
+
     @Override
     public String toString() {
         return "TextToSpeech{" +
                 "text='" + text + '\'' +
-                ", soundLength=" + (audio == null ? 0 : audio.length) +
+                ", metadata=" + metadata +
+                ", maryTTSParameters=" + maryTTSParameters +
+                ", system=" + system +
                 '}';
     }
 }

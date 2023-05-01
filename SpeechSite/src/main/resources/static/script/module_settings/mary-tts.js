@@ -3,9 +3,10 @@ $('#mary-tts-locale-select').on('change', function (e) {
     $.ajax({
             url: location.pathname.replace("synthesis","") + "mary-tts/parameters/voices",
             method: 'get',
-            data: locale,
+            data: locale : locale,
             success: function(data){
                 $('#voice-select').html(data);
+                $("#maryTTSVoiceSelect").bootstrapToggle();
             }
         });
 });

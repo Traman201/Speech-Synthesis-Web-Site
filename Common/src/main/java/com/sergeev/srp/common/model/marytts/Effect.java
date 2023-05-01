@@ -16,4 +16,12 @@ public class Effect {
     String name;
 
     Map<String, Double> effect;
+
+    @Override
+    public String toString() {
+        return "Effect{" +
+                "name='" + name + '\'' +
+                ", effect=" + effect +
+                '}';
+    }
 }

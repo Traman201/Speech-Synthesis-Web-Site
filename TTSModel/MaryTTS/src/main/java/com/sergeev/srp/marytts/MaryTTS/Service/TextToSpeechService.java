@@ -6,7 +6,6 @@ import com.sergeev.srp.common.model.marytts.Effect;
 import com.sergeev.srp.common.model.marytts.MaryTTSParameters;
 import lombok.extern.log4j.Log4j2;
 import marytts.LocalMaryInterface;
-import marytts.MaryInterface;
 import marytts.exceptions.MaryConfigurationException;
 import marytts.exceptions.SynthesisException;
 import marytts.features.MaryGenericFeatureProcessors;
@@ -22,16 +21,44 @@ import java.util.*;
 @Service
 @Log4j2
 public class TextToSpeechService {
-    private final MaryInterface marytts;
-
 
     public TextToSpeechService() throws MaryConfigurationException {
-        this.marytts = new LocalMaryInterface();
+
     }
 
-    public TextToSpeech textToSpeech(TextToSpeech text) throws SynthesisException, IOException {
-        marytts.setLocale(new Locale("ru"));
-        marytts.setVoice("ac-irina-hsmm");
+    public TextToSpeech textToSpeech(TextToSpeech text) throws SynthesisException, IOException, MaryConfigurationException {
+        LocalMaryInterface marytts = new LocalMaryInterface();
+        Locale locale = (Locale) text.getMaryTTSParameters().getLocales().toArray()[0];
+        log.info("Создан язык {}", locale);
+        marytts.setLocale(locale);
+        String voice = text.getMaryTTSParameters().getVoices().toArray()[0].toString();
+        marytts.setVoice(voice);
+        log.info("Установлен голос {}", voice);
+        String style = text.getMaryTTSParameters().getStyle()[0];
+        if (style != null && !style.equals("")) {
+            marytts.setStyle(style);
+            log.info("Установлен стиль {}", style);
+        }
+
+        if (text.getMaryTTSParameters().isUseEffects()) {
+            StringBuilder effectsStringBuilder = new StringBuilder();
+
+            for (Effect effect : text.getMaryTTSParameters().getAudioEffects()) {
+                effectsStringBuilder.append(effect.getName());
+                effectsStringBuilder.append("(");
+
+                effect.getEffect().forEach((k, v) -> {
+                    effectsStringBuilder.append(k).append(":").append(v).append(",");
+                });
+                effectsStringBuilder.deleteCharAt(effectsStringBuilder.length() - 1);
+                effectsStringBuilder.append(")+");
+            }
+            effectsStringBuilder.deleteCharAt(effectsStringBuilder.length() - 1);
+            log.info("Собрана строка дополнительных эффектов: {}", effectsStringBuilder.toString());
+            marytts.setAudioEffects(effectsStringBuilder.toString());
+        }
+
+
         try (AudioInputStream audioInputStream = marytts.generateAudio(text.getText())) {
             log.info("Успешно сгенерирован речевой сигнал длины {}", audioInputStream.getFrameLength());
 
@@ -47,7 +74,9 @@ public class TextToSpeechService {
         }
     }
 
-    public MaryTTSParameters getAvailableParams() {
+    public MaryTTSParameters getAvailableParams() throws MaryConfigurationException {
+        LocalMaryInterface marytts = new LocalMaryInterface();
+        log.info("Язык по умолчанию: {}", marytts.getLocale());
         MaryTTSParameters parameters = new MaryTTSParameters();
 
         MaryGenericFeatureProcessors.Style style = new MaryGenericFeatureProcessors.Style();

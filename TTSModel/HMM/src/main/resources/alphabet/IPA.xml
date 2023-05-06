@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IPA>
+    <phoneme symbol="b">
+        <grapheme>b</grapheme>
+        <grapheme>bb</grapheme>
+        <grapheme>be</grapheme>
+    </phoneme>
+    <phoneme symbol="d">
+        <grapheme>d</grapheme>
+        <grapheme>dd</grapheme>
+        <grapheme>ed</grapheme>
+        <grapheme>de</grapheme>
+    </phoneme>
+    <phoneme symbol="f">
+        <grapheme>f</grapheme>
+        <grapheme>ff</grapheme>
+        <grapheme>ph</grapheme>
+        <grapheme>gh</grapheme>
+        <grapheme>lf</grapheme>
+        <grapheme>ft</grapheme>
+        <grapheme>fe</grapheme>
+        <grapheme>ffe</grapheme>
+    </phoneme>
+    <phoneme symbol="g">
+        <grapheme>g</grapheme>
+        <grapheme>gg</grapheme>
+        <grapheme>gh</grapheme>
+        <grapheme>gu</grapheme>
+        <grapheme>gue</grapheme>
+    </phoneme>
+    <phoneme symbol="h">
+        <grapheme>h</grapheme>
+        <grapheme>wh</grapheme>
+    </phoneme>
+    <phoneme symbol="4">
+        <grapheme>j</grapheme>
+        <grapheme>ge</grapheme>
+        <grapheme>g</grapheme>
+        <grapheme>dge</grapheme>
+        <grapheme>di</grapheme>
+        <grapheme>gg</grapheme>
+        <grapheme>dj</grapheme>
+        <grapheme>dg</grapheme>
+        <grapheme>du</grapheme>
+    </phoneme>
+    <phoneme symbol="k">
+        <grapheme>k</grapheme>
+        <grapheme>c</grapheme>
+        <grapheme>ch</grapheme>
+        <grapheme>cc</grapheme>
+        <grapheme>lk</grapheme>
+        <grapheme>qu</grapheme>
+        <grapheme>q</grapheme>
+        <grapheme>ck</grapheme>
+        <grapheme>x</grapheme>
+        <grapheme>ke</grapheme>
+        <grapheme>que</grapheme>
+    </phoneme>
+    <phoneme symbol="l">
+        <grapheme>l</grapheme>
+        <grapheme>ll</grapheme>
+        <grapheme>le</grapheme>
+        <grapheme>al</grapheme>
+        <grapheme>el</grapheme>
+        <grapheme>ghl</grapheme>
+        <grapheme>sl</grapheme>
+    </phoneme>
+    <phoneme symbol="m">
+        <grapheme>m</grapheme>
+        <grapheme>mm</grapheme>
+        <grapheme>mb</grapheme>
+        <grapheme>mn</grapheme>
+        <grapheme>lm</grapheme>
+        <grapheme>me</grapheme>
+    </phoneme>
+    <phoneme symbol="n">
+        <grapheme>n</grapheme>
+        <grapheme>nn</grapheme>
+        <grapheme>kn</grapheme>
+        <grapheme>gn</grapheme>
+        <grapheme>pn</grapheme>
+        <grapheme>mn</grapheme>
+        <grapheme>ne</grapheme>
+        <grapheme>on</grapheme>
+        <grapheme>ain</grapheme>
+        <grapheme>nd</grapheme>
+        <grapheme>rn</grapheme>
+        <grapheme>e</grapheme>
+        <grapheme>en</grapheme>
+    </phoneme>
+    <phoneme symbol="p">
+        <grapheme>p</grapheme>
+        <grapheme>pp</grapheme>
+        <grapheme>pe</grapheme>
+    </phoneme>
+    <phoneme symbol="r">
+        <grapheme>r</grapheme>
+        <grapheme>rr</grapheme>
+        <grapheme>wr</grapheme>
+        <grapheme>rh</grapheme>
+        <grapheme>er</grapheme>
+    </phoneme>
+    <phoneme symbol="s">
+        <grapheme>s</grapheme>
+        <grapheme>ss</grapheme>
+        <grapheme>c</grapheme>
+        <grapheme>sc</grapheme>
+        <grapheme>ps</grapheme>
+        <grapheme>st</grapheme>
+        <grapheme>ce</grapheme>
+        <grapheme>se</grapheme>
+        <grapheme>sce</grapheme>
+    </phoneme>
+    <phoneme symbol="t">
+        <grapheme>t</grapheme>
+        <grapheme>tt</grapheme>
+        <grapheme>tte</grapheme>
+        <grapheme>th</grapheme>
+        <grapheme>ed</grapheme>
+        <grapheme>bt</grapheme>
+        <grapheme>te</grapheme>
+        <grapheme>ht</grapheme>
+        <grapheme>ght</grapheme>
+    </phoneme>
+    <phoneme symbol="v">
+        <grapheme>v</grapheme>
+        <grapheme>f</grapheme>
+        <grapheme>ph</grapheme>
+        <grapheme>ve</grapheme>
+    </phoneme>
+    <phoneme symbol="w">
+        <grapheme>w</grapheme>
+        <grapheme>wh</grapheme>
+        <grapheme>u</grapheme>
+        <grapheme>o</grapheme>
+    </phoneme>
+    <phoneme symbol="z">
+        <grapheme>z</grapheme>
+        <grapheme>zz</grapheme>
+        <grapheme>s</grapheme>
+        <grapheme>ss</grapheme>
+        <grapheme>x</grapheme>
+        <grapheme>ze</grapheme>
+        <grapheme>se</grapheme>
+        <grapheme>si</grapheme>
+    </phoneme>
+    <phoneme symbol="3">
+        <grapheme>s</grapheme>
+        <grapheme>si</grapheme>
+        <grapheme>z</grapheme>
+    </phoneme>
+    <phoneme symbol="$">
+        <grapheme>ch</grapheme>
+        <grapheme>tch</grapheme>
+        <grapheme>tu</grapheme>
+        <grapheme>ti</grapheme>
+        <grapheme>te</grapheme>
+        <grapheme>tur</grapheme>
+        <grapheme>t</grapheme>
+        <grapheme>ght</grapheme>
+    </phoneme>
+    <phoneme symbol="!">
+        <grapheme>sh</grapheme>
+        <grapheme>ce</grapheme>
+        <grapheme>s</grapheme>
+        <grapheme>ci</grapheme>
+        <grapheme>si</grapheme>
+        <grapheme>ch</grapheme>
+        <grapheme>sci</grapheme>
+        <grapheme>ti</grapheme>
+        <grapheme>tio</grapheme>
+        <grapheme>ss</grapheme>
+        <grapheme>c</grapheme>
+        <grapheme>t</grapheme>
+    </phoneme>
+    <phoneme symbol="0">
+        <grapheme>th</grapheme>
+    </phoneme>
+    <phoneme symbol="%">
+        <grapheme>th</grapheme>
+        <grapheme>the</grapheme>
+    </phoneme>
+    <phoneme symbol="№">
+        <grapheme>ng</grapheme>
+        <grapheme>n</grapheme>
+        <grapheme>ngue</grapheme>
+    </phoneme>
+    <phoneme symbol="j">
+        <grapheme>y</grapheme>
+        <grapheme>i</grapheme>
+        <grapheme>j</grapheme>
+        <grapheme>u</grapheme>
+        <grapheme>ue</grapheme>
+        <grapheme>eau</grapheme>
+        <grapheme>ew</grapheme>
+    </phoneme>
+    <phoneme symbol="1">
+        <grapheme>a</grapheme>
+        <grapheme>ai</grapheme>
+        <grapheme>au</grapheme>
+        <grapheme>ea</grapheme>
+    </phoneme>
+    <phoneme symbol="2">
+        <grapheme>a</grapheme>
+        <grapheme>ai</grapheme>
+        <grapheme>eigh</grapheme>
+        <grapheme>aigh</grapheme>
+        <grapheme>ay</grapheme>
+        <grapheme>er</grapheme>
+        <grapheme>et</grapheme>
+        <grapheme>ei</grapheme>
+        <grapheme>au</grapheme>
+        <grapheme>a_e</grapheme>
+        <grapheme>ea</grapheme>
+        <grapheme>ey</grapheme>
+    </phoneme>
+    <phoneme symbol="e">
+        <grapheme>e</grapheme>
+        <grapheme>ea</grapheme>
+        <grapheme>u</grapheme>
+        <grapheme>ie</grapheme>
+        <grapheme>ai</grapheme>
+        <grapheme>a</grapheme>
+        <grapheme>eo</grapheme>
+        <grapheme>ei</grapheme>
+        <grapheme>ae</grapheme>
+    </phoneme>
+    <phoneme symbol=":">
+        <grapheme>e</grapheme>
+        <grapheme>ee</grapheme>
+        <grapheme>ea</grapheme>
+        <grapheme>y</grapheme>
+        <grapheme>ey</grapheme>
+        <grapheme>oe</grapheme>
+        <grapheme>ie</grapheme>
+        <grapheme>i</grapheme>
+        <grapheme>ei</grapheme>
+        <grapheme>eo</grapheme>
+        <grapheme>ay</grapheme>
+    </phoneme>
+    <phoneme symbol="i">
+        <grapheme>i</grapheme>
+        <grapheme>e</grapheme>
+        <grapheme>o</grapheme>
+        <grapheme>u</grapheme>
+        <grapheme>ui</grapheme>
+        <grapheme>y</grapheme>
+        <grapheme>ie</grapheme>
+        <grapheme>ei</grapheme>
+        <grapheme>eye</grapheme>
+    </phoneme>
+    <phoneme symbol="#">
+        <grapheme>i</grapheme>
+        <grapheme>y</grapheme>
+        <grapheme>igh</grapheme>
+        <grapheme>ie</grapheme>
+        <grapheme>uy</grapheme>
+        <grapheme>ye</grapheme>
+        <grapheme>ai</grapheme>
+        <grapheme>is</grapheme>
+        <grapheme>eigh</grapheme>
+        <grapheme>i_e</grapheme>
+    </phoneme>
+    <phoneme symbol="a">
+        <grapheme>a</grapheme>
+        <grapheme>ho</grapheme>
+        <grapheme>au</grapheme>
+        <grapheme>aw</grapheme>
+        <grapheme>ow</grapheme>
+        <grapheme>ough</grapheme>
+        <grapheme>a</grapheme>
+        <grapheme>o</grapheme>
+    </phoneme>
+    <phoneme symbol="8">
+        <grapheme>o</grapheme>
+        <grapheme>oa</grapheme>
+        <grapheme>ou</grapheme>
+        <grapheme>eo</grapheme>
+        <grapheme>oe</grapheme>
+        <grapheme>ow</grapheme>
+        <grapheme>ough</grapheme>
+        <grapheme>eau</grapheme>
+        <grapheme>oo</grapheme>
+        <grapheme>ew</grapheme>
+        <grapheme>oh</grapheme>
+    </phoneme>
+    <phoneme symbol="o">
+        <grapheme>o</grapheme>
+        <grapheme>oo</grapheme>
+        <grapheme>u</grapheme>
+        <grapheme>ou</grapheme>
+        <grapheme>oul</grapheme>
+    </phoneme>
+    <phoneme symbol="^">
+        <grapheme>u</grapheme>
+        <grapheme>o</grapheme>
+        <grapheme>oo</grapheme>
+        <grapheme>ou</grapheme>
+        <grapheme>n</grapheme>
+    </phoneme>
+    <phoneme symbol="u">
+        <grapheme>o</grapheme>
+        <grapheme>u</grapheme>
+        <grapheme>oo</grapheme>
+        <grapheme>ew</grapheme>
+        <grapheme>ue</grapheme>
+        <grapheme>oe</grapheme>
+        <grapheme>ough</grapheme>
+        <grapheme>ui</grapheme>
+        <grapheme>oew</grapheme>
+        <grapheme>ou</grapheme>
+        <grapheme>wo</grapheme>
+    </phoneme>
+    <phoneme symbol=";">
+        <grapheme>oi</grapheme>
+        <grapheme>oy</grapheme>
+        <grapheme>uoy</grapheme>
+    </phoneme>
+    <phoneme symbol="]">
+        <grapheme>ow</grapheme>
+        <grapheme>ou</grapheme>
+        <grapheme>ough</grapheme>
+        <grapheme>h</grapheme>
+    </phoneme>
+    <phoneme symbol="[">
+        <grapheme>a</grapheme>
+        <grapheme>e</grapheme>
+        <grapheme>er</grapheme>
+        <grapheme>i</grapheme>
+        <grapheme>ar</grapheme>
+        <grapheme>our</grapheme>
+        <grapheme>ur</grapheme>
+        <grapheme>o</grapheme>
+        <grapheme>or</grapheme>
+        <grapheme>wer</grapheme>
+        <grapheme>u</grapheme>
+        <grapheme>ou</grapheme>
+        <grapheme>re</grapheme>
+        <grapheme>ure</grapheme>
+        <grapheme>iou</grapheme>
+    </phoneme>
+    <phoneme symbol="}">
+        <grapheme>air</grapheme>
+        <grapheme>are</grapheme>
+        <grapheme>ear</grapheme>
+        <grapheme>ere</grapheme>
+        <grapheme>eir</grapheme>
+        <grapheme>ayer</grapheme>
+        <grapheme>ayor</grapheme>
+        <grapheme>a</grapheme>
+        <grapheme>he</grapheme>
+        <grapheme>eah</grapheme>
+    </phoneme>
+    <phoneme symbol="{">
+        <grapheme>a</grapheme>
+        <grapheme>ar</grapheme>
+        <grapheme>ear</grapheme>
+    </phoneme>
+    <phoneme symbol="5">
+        <grapheme>ir</grapheme>
+        <grapheme>er</grapheme>
+        <grapheme>ur</grapheme>
+        <grapheme>ear</grapheme>
+        <grapheme>or</grapheme>
+        <grapheme>our</grapheme>
+        <grapheme>yr</grapheme>
+        <grapheme>ur</grapheme>
+    </phoneme>
+    <phoneme symbol="(">
+        <grapheme>aw</grapheme>
+        <grapheme>a</grapheme>
+        <grapheme>or</grapheme>
+        <grapheme>oor</grapheme>
+        <grapheme>ore</grapheme>
+        <grapheme>oar</grapheme>
+        <grapheme>our</grapheme>
+        <grapheme>augh</grapheme>
+        <grapheme>ar</grapheme>
+        <grapheme>ough</grapheme>
+        <grapheme>au</grapheme>
+        <grapheme>o</grapheme>
+    </phoneme>
+    <phoneme symbol="6">
+        <grapheme>ear</grapheme>
+        <grapheme>eer</grapheme>
+        <grapheme>ere</grapheme>
+        <grapheme>ier</grapheme>
+        <grapheme>iar</grapheme>
+        <grapheme>ire</grapheme>
+        <grapheme>iou</grapheme>
+        <grapheme>ior</grapheme>
+        <grapheme>yer</grapheme>
+        <grapheme>ia</grapheme>
+        <grapheme>ie</grapheme>
+        <grapheme>ea</grapheme>
+        <grapheme>a</grapheme>
+        <grapheme>ee</grapheme>
+        <grapheme>i</grapheme>
+        <grapheme>e</grapheme>
+        <grapheme>io</grapheme>
+    </phoneme>
+    <phoneme symbol="7">
+        <grapheme>ure</grapheme>
+        <grapheme>our</grapheme>
+        <grapheme>ou</grapheme>
+        <grapheme>a</grapheme>
+        <grapheme>ue</grapheme>
+    </phoneme>
+</IPA>
+

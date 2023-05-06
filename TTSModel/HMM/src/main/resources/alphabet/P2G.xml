@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IPA>
+    <phoneme symbol="а">
+        <grapheme>а</grapheme>
+        <grapheme>я</grapheme>
+        <grapheme>о</grapheme>
+    </phoneme>
+    <phoneme symbol="и">
+        <grapheme>и</grapheme>
+        <grapheme>е</grapheme>
+    </phoneme>
+    <phoneme symbol="у">
+        <grapheme>у</grapheme>
+        <grapheme>ю</grapheme>
+    </phoneme>
+    <phoneme symbol="о">
+        <grapheme>о</grapheme>
+        <grapheme>ё</grapheme>
+    </phoneme>
+    <phoneme symbol="ы">
+        <grapheme>ы</grapheme>
+        <grapheme>и</grapheme>
+    </phoneme>
+    <phoneme symbol="э">
+        <grapheme>э</grapheme>
+        <grapheme>е</grapheme>
+    </phoneme>
+    <phoneme symbol="б">
+        <grapheme>б</grapheme>
+    </phoneme>
+    <phoneme symbol="б'">
+        <grapheme>б</grapheme>
+    </phoneme>
+    <phoneme symbol="в">
+        <grapheme>в</grapheme>
+    </phoneme>
+    <phoneme symbol="в'">
+        <grapheme>в</grapheme>
+    </phoneme>
+    <phoneme symbol="г">
+        <grapheme>г</grapheme>
+    </phoneme>
+    <phoneme symbol="г'">
+        <grapheme>г</grapheme>
+    </phoneme>
+    <phoneme symbol="д">
+        <grapheme>д</grapheme>
+    </phoneme>
+    <phoneme symbol="д'">
+        <grapheme>д</grapheme>
+    </phoneme>
+    <phoneme symbol="з">
+        <grapheme>з</grapheme>
+    </phoneme>
+    <phoneme symbol="з'">
+        <grapheme>p</grapheme>
+    </phoneme>
+    <phoneme symbol="к">
+        <grapheme>к</grapheme>
+    </phoneme>
+    <phoneme symbol="к'">
+        <grapheme>к</grapheme>
+    </phoneme>
+    <phoneme symbol="л">
+        <grapheme>л</grapheme>
+    </phoneme>
+    <phoneme symbol="л'">
+        <grapheme>л</grapheme>
+    </phoneme>
+    <phoneme symbol="м">
+        <grapheme>м</grapheme>
+    </phoneme>
+    <phoneme symbol="м'">
+        <grapheme>м</grapheme>
+    </phoneme>
+    <phoneme symbol="н">
+        <grapheme>н</grapheme>
+    </phoneme>
+    <phoneme symbol="н'">
+        <grapheme>н</grapheme>
+    </phoneme>
+    <phoneme symbol="п">
+        <grapheme>п</grapheme>
+    </phoneme>
+    <phoneme symbol="п'">
+        <grapheme>п</grapheme>
+    </phoneme>
+    <phoneme symbol="р">
+        <grapheme>р</grapheme>
+    </phoneme>
+    <phoneme symbol="р'">
+        <grapheme>р</grapheme>
+    </phoneme>
+    <phoneme symbol="с">
+        <grapheme>с</grapheme>
+    </phoneme>
+    <phoneme symbol="с'">
+        <grapheme>с</grapheme>
+    </phoneme>
+    <phoneme symbol="т">
+        <grapheme>т</grapheme>
+    </phoneme>
+    <phoneme symbol="т'">
+        <grapheme>т</grapheme>
+    </phoneme>
+    <phoneme symbol="ф">
+        <grapheme>ф</grapheme>
+    </phoneme>
+    <phoneme symbol="ф'">
+        <grapheme>ф</grapheme>
+    </phoneme>
+    <phoneme symbol="х">
+        <grapheme>х</grapheme>
+    </phoneme>
+    <phoneme symbol="х'">
+        <grapheme>x</grapheme>
+    </phoneme>
+    <phoneme symbol="ж">
+        <grapheme>ж</grapheme>
+    </phoneme>
+    <phoneme symbol="ш">
+        <grapheme>ш</grapheme>
+    </phoneme>
+    <phoneme symbol="ц">
+        <grapheme>ц</grapheme>
+    </phoneme>
+    <phoneme symbol="й'">
+        <grapheme>й</grapheme>
+    </phoneme>
+    <phoneme symbol="ч'">
+        <grapheme>ч</grapheme>
+    </phoneme>
+    <phoneme symbol="щ'">
+        <grapheme>щ</grapheme>
+    </phoneme>
+    <phoneme symbol="*">
+        <grapheme>ъ</grapheme>
+        <grapheme>ь</grapheme>
+    </phoneme>
+</IPA>
+

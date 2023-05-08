@@ -29,7 +29,7 @@ public class SpeechSynthesisController {
     @GetMapping
     public String mainView(Model model) {
 
-        return "synthesis";
+        return "/site/speech-synthesis";
     }
 
     @PostMapping(value = "/synthesize")

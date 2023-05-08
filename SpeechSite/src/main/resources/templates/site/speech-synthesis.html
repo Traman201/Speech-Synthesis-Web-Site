@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="MaryTTS, FreeTTS">
+    <meta name="description" content="">
+    <title> Синтез речи</title>
+    <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
+    <link rel="stylesheet" th:href="@{/css/speech-synthesis.css}" media="screen">
+    <script class="u-script" type="text/javascript" th:src="@{/script/jquery.js}" defer=""></script>
+    <script class="u-script" type="text/javascript" th:src="@{script/nicepage.js}" defer=""></script>
+    <meta name="generator" content="Nicepage 5.9.6, nicepage.com">
+    <meta name="referrer" content="origin">
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+
+    <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "speechsynhtesis",
+        "logo": "images/logo-no-background.png"
+    }</script>
+    <meta name="theme-color" content="#3e588b">
+    <meta property="og:title" content="Синтез речи">
+    <meta property="og:type" content="website">
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
+</head>
+<body class="u-body u-xl-mode" data-lang="ru">
+<header class="u-clearfix u-gradient u-header u-header" id="sec-8c91">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="1000" data-image-height="378">
+            <img th:src="@{/images/logo-no-background.png}" class="u-logo-image u-logo-image-1">
+        </a>
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" data-responsive-from="MD">
+            <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; font-weight: 500;">
+                <a class="u-button-style u-custom-active-color u-custom-border u-custom-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                   href="#" style="padding: 11px 30px; font-size: calc(1em + 22px);">
+                    <svg class="u-svg-link" viewBox="0 0 24 24">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+                    </svg>
+                    <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <rect y="1" width="16" height="2"></rect>
+                            <rect y="7" width="16" height="2"></rect>
+                            <rect y="13" width="16" height="2"></rect>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="u-custom-menu u-nav-container">
+                <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
+                    <li class="u-nav-item"><a
+                            class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                            href="Главная.html" style="padding: 10px 20px;">Главная</a>
+                    </li>
+                    <li class="u-nav-item"><a
+                            class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                            href="speech-synthesis.html" style="padding: 10px 20px;"> Синтез речи</a>
+                    </li>
+                    <li class="u-nav-item"><a
+                            class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                            href="История.html" style="padding: 10px 20px;">История</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="u-custom-menu u-nav-container-collapse">
+                <div class="u-border-2 u-border-grey-75 u-container-style u-inner-container-layout u-opacity u-opacity-95 u-palette-1-dark-2 u-sidenav">
+                    <div class="u-inner-container-layout u-sidenav-overflow">
+                        <div class="u-menu-close"></div>
+                        <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Главная.html">Главная</a>
+                            </li>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="speech-synthesis.html">
+                                Синтез речи</a>
+                            </li>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="История.html">История</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="u-menu-overlay u-opacity u-opacity-60 u-palette-1-light-1"></div>
+            </div>
+        </nav>
+    </div>
+</header>
+<section class="skrollable u-clearfix u-gradient u-section-1" id="sec-3e97">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <h3 class="u-align-center u-text u-text-1">Настройки синтеза</h3>
+        <div class="u-align-center u-form u-form-1">
+            <form action="https://forms.nicepagesrv.com/v2/form/process"
+                  class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form"
+                  style="padding: 10px;">
+                <div class="u-form-group u-form-select u-form-group-1">
+                    <label for="select-0ef8" class="u-label">Выберите язык</label>
+                    <div class="u-form-select-wrapper">
+                        <select id="select-0ef8" name="language" class="u-input u-input-rectangle">
+                            <option value="Item 1" data-calc="">Item 1</option>
+                            <option value="Item 2" data-calc="">Item 2</option>
+                            <option value="Item 3" data-calc="">Item 3</option>
+                        </select>
+                        <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px"
+                             viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve"><polygon class="st0" points="8,12 2,4 14,4 "></polygon></svg>
+                    </div>
+                </div>
+                <div class="u-form-group u-form-select u-form-group-2">
+                    <label for="select-5003" class="u-label">Выберите голос</label>
+                    <div class="u-form-select-wrapper">
+                        <select id="select-5003" name="voice" class="u-input u-input-rectangle">
+                            <option value="Item 1" data-calc="">Item 1</option>
+                            <option value="Item 2" data-calc="">Item 2</option>
+                            <option value="Item 3" data-calc="">Item 3</option>
+                        </select>
+                        <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px"
+                             viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve"><polygon class="st0" points="8,12 2,4 14,4 "></polygon></svg>
+                    </div>
+                </div>
+                <div class="u-form-checkbox u-form-group u-form-group-3">
+                    <input type="checkbox" id="checkbox-0992" name="checkbox" value="On" class="u-field-input">
+                    <label for="checkbox-0992" class="u-field-label">Использовать дополнительные параметры</label>
+                </div>
+                <div class="u-align-left u-form-group u-form-submit">
+                    <a href="#" class="u-btn u-btn-submit u-button-style u-btn-1">Выполнить</a>
+                    <input type="submit" value="submit" class="u-form-control-hidden">
+                </div>
+                <div class="u-form-send-message u-form-send-success"> Спасибо! Ваше сообщение отправлено.</div>
+                <div class="u-form-send-error u-form-send-message"> Отправка не удалась. Пожалуйста, исправьте ошибки и
+                    попробуйте еще раз.
+                </div>
+                <input type="hidden" value="" name="recaptchaResponse">
+                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+            </form>
+        </div>
+        <div class="u-accordion u-collapsed-by-default u-accordion-1">
+            <div class="u-accordion-item">
+                <a class="u-accordion-link u-button-style u-text-body-color" id="link-785d" aria-controls="785d"
+                   aria-selected="false">
+              <span class="u-accordion-link-text">Дополнителные параметры<span class="u-text-body-color"></span>
+              </span><span class="u-accordion-link-icon u-icon u-icon-rounded u-palette-1-base u-text-white u-icon-1"><svg
+                        class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16"><use
+                        xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1de1"></use></svg><svg
+                        class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-1de1"><path d="M8,10.7L1.6,5.3c-0.4-0.4-1-0.4-1.3,0c-0.4,0.4-0.4,0.9,0,1.3l7.2,6.1c0.1,0.1,0.4,0.2,0.6,0.2s0.4-0.1,0.6-0.2l7.1-6
+	c0.4-0.4,0.4-0.9,0-1.3c-0.4-0.4-1-0.4-1.3,0L8,10.7z"></path></svg></span>
+                </a>
+                <div class="u-accordion-pane u-container-style u-accordion-pane-1" id="785d"
+                     aria-labelledby="link-785d">
+                    <div class="u-container-layout u-container-layout-1">
+                        <div class="u-form u-form-2">
+                            <form action="https://forms.nicepagesrv.com/v2/form/process"
+                                  class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+                                  style="padding: 15px;" source="email" name="form">
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-5">
+                                    <label for="number-9dc2" class="u-label">Громкость</label>
+                                    <div class="u-input-row" data-value="50">
+                                        <input value="50" min="0" max="100" step="1" type="range" placeholder=""
+                                               id="number-9dc2" name="number"
+                                               class="u-input u-input-rectangle u-range u-text-black">
+                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="0" max="100"
+                                               step="1" value="50">
+                                    </div>
+                                </div>
+                                <div class="u-form-checkbox u-form-group u-label-top">
+                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                           class="u-field-input">
+                                    <label for="checkbox-98c2" class="u-field-label">Использовать громкость</label>
+                                </div>
+                                <div class="u-align-left u-form-group u-form-submit u-label-top">
+                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                                    <input type="submit" value="submit" class="u-form-control-hidden">
+                                </div>
+                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
+                                    sent.
+                                </div>
+                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
+                                    fix errors then try again.
+                                </div>
+                                <input type="hidden" value="" name="recaptchaResponse">
+                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+                            </form>
+                        </div>
+                        <div class="u-expanded-width u-form u-form-3">
+                            <form action="https://forms.nicepagesrv.com/v2/form/process"
+                                  class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+                                  style="padding: 15px;" source="email" name="form">
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-8">
+                                    <label for="number-9dc2" class="u-label">Множитель основного тона</label>
+                                    <div class="u-input-row" data-value="1">
+                                        <input value="1" min="0" max="10" step="1" type="range" placeholder=""
+                                               id="number-9dc2" name="number"
+                                               class="u-input u-input-rectangle u-range u-text-black">
+                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="0" max="10"
+                                               step="1" value="1">
+                                    </div>
+                                </div>
+                                <div class="u-form-checkbox u-form-group u-label-top">
+                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                           class="u-field-input">
+                                    <label for="checkbox-98c2" class="u-field-label">Использовать множитель основного
+                                        тона</label>
+                                </div>
+                                <div class="u-align-left u-form-group u-form-submit u-label-top">
+                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                                    <input type="submit" value="submit" class="u-form-control-hidden">
+                                </div>
+                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
+                                    sent.
+                                </div>
+                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
+                                    fix errors then try again.
+                                </div>
+                                <input type="hidden" value="" name="recaptchaResponse">
+                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+                            </form>
+                        </div>
+                        <div class="u-expanded-width u-form u-form-4">
+                            <form action="https://forms.nicepagesrv.com/v2/form/process"
+                                  class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+                                  style="padding: 15px;" source="email" name="form">
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-11">
+                                    <label for="number-9dc2" class="u-label">Увеличение основного тона</label>
+                                    <div class="u-input-row" data-value="50">
+                                        <input value="50" min="0" max="100" step="1" type="range" placeholder=""
+                                               id="number-9dc2" name="number"
+                                               class="u-input u-input-rectangle u-range u-text-black">
+                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="0" max="100"
+                                               step="1" value="50">
+                                    </div>
+                                </div>
+                                <div class="u-form-checkbox u-form-group u-label-top">
+                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                           class="u-field-input">
+                                    <label for="checkbox-98c2" class="u-field-label">Использовать увеличение основного
+                                        тона</label>
+                                </div>
+                                <div class="u-align-left u-form-group u-form-submit u-label-top">
+                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                                    <input type="submit" value="submit" class="u-form-control-hidden">
+                                </div>
+                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
+                                    sent.
+                                </div>
+                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
+                                    fix errors then try again.
+                                </div>
+                                <input type="hidden" value="" name="recaptchaResponse">
+                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+                            </form>
+                        </div>
+                        <div class="u-form u-form-5">
+                            <form action="https://forms.nicepagesrv.com/v2/form/process"
+                                  class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+                                  style="padding: 15px;" source="email" name="form">
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-14">
+                                    <label for="number-9dc2" class="u-label">Темп</label>
+                                    <div class="u-input-row" data-value="1">
+                                        <input value="1" min="0" max="10" step="1" type="range" placeholder=""
+                                               id="number-9dc2" name="number"
+                                               class="u-input u-input-rectangle u-range u-text-black">
+                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="0" max="10"
+                                               step="1" value="1">
+                                    </div>
+                                </div>
+                                <div class="u-form-checkbox u-form-group u-label-top">
+                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                           class="u-field-input">
+                                    <label for="checkbox-98c2" class="u-field-label">Использовать темп</label>
+                                </div>
+                                <div class="u-align-left u-form-group u-form-submit u-label-top">
+                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                                    <input type="submit" value="submit" class="u-form-control-hidden">
+                                </div>
+                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
+                                    sent.
+                                </div>
+                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
+                                    fix errors then try again.
+                                </div>
+                                <input type="hidden" value="" name="recaptchaResponse">
+                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+                            </form>
+                        </div>
+                        <div class="u-expanded-width u-form u-form-6">
+                            <form action="https://forms.nicepagesrv.com/v2/form/process"
+                                  class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+                                  style="padding: 15px;" source="email" name="form">
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-17">
+                                    <label for="number-9dc2" class="u-label">Робот</label>
+                                    <div class="u-input-row" data-value="0">
+                                        <input value="0" min="0" max="100" step="1" type="range" placeholder=""
+                                               id="number-9dc2" name="number"
+                                               class="u-input u-input-rectangle u-range u-text-black">
+                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="0" max="100"
+                                               step="1" value="0">
+                                    </div>
+                                </div>
+                                <div class="u-form-checkbox u-form-group u-label-top">
+                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                           class="u-field-input">
+                                    <label for="checkbox-98c2" class="u-field-label">Использовать эффект робота</label>
+                                </div>
+                                <div class="u-align-left u-form-group u-form-submit u-label-top">
+                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                                    <input type="submit" value="submit" class="u-form-control-hidden">
+                                </div>
+                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
+                                    sent.
+                                </div>
+                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
+                                    fix errors then try again.
+                                </div>
+                                <input type="hidden" value="" name="recaptchaResponse">
+                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+                            </form>
+                        </div>
+                        <div class="u-expanded-width u-form u-form-7">
+                            <form action="https://forms.nicepagesrv.com/v2/form/process"
+                                  class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+                                  style="padding: 15px;" source="email" name="form">
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-20">
+                                    <label for="number-9dc2" class="u-label">Шепот</label>
+                                    <div class="u-input-row" data-value="0">
+                                        <input value="0" min="0" max="100" step="1" type="range" placeholder=""
+                                               id="number-9dc2" name="number"
+                                               class="u-input u-input-rectangle u-range u-text-black">
+                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="0" max="100"
+                                               step="1" value="0">
+                                    </div>
+                                </div>
+                                <div class="u-form-checkbox u-form-group u-label-top">
+                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                           class="u-field-input">
+                                    <label for="checkbox-98c2" class="u-field-label">Использовать эффект шепота</label>
+                                </div>
+                                <div class="u-align-left u-form-group u-form-submit u-label-top">
+                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                                    <input type="submit" value="submit" class="u-form-control-hidden">
+                                </div>
+                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
+                                    sent.
+                                </div>
+                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
+                                    fix errors then try again.
+                                </div>
+                                <input type="hidden" value="" name="recaptchaResponse">
+                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+                            </form>
+                        </div>
+                        <div class="u-expanded-width u-form u-form-8">
+                            <form action="https://forms.nicepagesrv.com/v2/form/process"
+                                  class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+                                  style="padding: 15px;" source="email" name="form">
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-23">
+                                    <label for="number-9dc2" class="u-label">Стадион</label>
+                                    <div class="u-input-row" data-value="0">
+                                        <input value="0" min="0" max="100" step="1" type="range" placeholder=""
+                                               id="number-9dc2" name="number"
+                                               class="u-input u-input-rectangle u-range u-text-black">
+                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="0" max="100"
+                                               step="1" value="0">
+                                    </div>
+                                </div>
+                                <div class="u-form-checkbox u-form-group u-label-top">
+                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                           class="u-field-input">
+                                    <label for="checkbox-98c2" class="u-field-label">Использовать эффект
+                                        стадиона</label>
+                                </div>
+                                <div class="u-align-left u-form-group u-form-submit u-label-top">
+                                    <a href="#" class="u-border-none u-btn u-btn-submit u-button-style">Submit</a>
+                                    <input type="submit" value="submit" class="u-form-control-hidden">
+                                </div>
+                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
+                                    sent.
+                                </div>
+                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
+                                    fix errors then try again.
+                                </div>
+                                <input type="hidden" value="" name="recaptchaResponse">
+                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+                            </form>
+                        </div>
+                        <div class="u-expanded-width u-form u-form-9">
+                            <form action="https://forms.nicepagesrv.com/v2/form/process"
+                                  class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+                                  style="padding: 15px;" source="email" name="form">
+                                <p class="u-form-group u-form-text u-text u-text-2"> Хорус</p>
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-27">
+                                    <label for="number-9dc2" class="u-label">Усиление 1</label>
+                                    <div class="u-input-row" data-value="0">
+                                        <input value="0" min="-1" max="1" step="0.1" type="range" placeholder=""
+                                               id="number-9dc2" name="number"
+                                               class="u-input u-input-rectangle u-range u-text-black">
+                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="-1" max="1"
+                                               step="0.1" value="0">
+                                    </div>
+                                </div>
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-28">
+                                    <label for="range-4505" class="u-label">Усиление 2</label>
+                                    <div class="u-input-row" data-value="0">
+                                        <input value="0" min="-1" max="1" step="0.1" type="range" placeholder=""
+                                               id="range-4505" name="range" class="u-input u-range">
+                                        <input type="number" placeholder="" id="number-range-4505"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="-1" max="1"
+                                               step="0.1" value="0">
+                                    </div>
+                                </div>
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-29">
+                                    <label for="range-9022" class="u-label">Усиление 3</label>
+                                    <div class="u-input-row" data-value="0">
+                                        <input value="0" min="-1" max="1" step="1" type="range" placeholder=""
+                                               id="range-9022" name="range-1" class="u-input u-range">
+                                        <input type="number" placeholder="" id="number-range-9022"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="-1" max="1"
+                                               step="1" value="0">
+                                    </div>
+                                </div>
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-30">
+                                    <label for="range-e47e" class="u-label">Задержка 1</label>
+                                    <div class="u-input-row" data-value="0">
+                                        <input value="0" min="0" max="1000" step="1" type="range" placeholder=""
+                                               id="range-e47e" name="range-2" class="u-input u-range">
+                                        <input type="number" placeholder="" id="number-range-e47e"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="0" max="1000"
+                                               step="1" value="0">
+                                    </div>
+                                </div>
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-31">
+                                    <label for="range-d3ef" class="u-label">Задержка 2</label>
+                                    <div class="u-input-row" data-value="0">
+                                        <input value="0" min="0" max="1000" step="1" type="range" placeholder=""
+                                               id="range-d3ef" name="range-3" class="u-input u-range">
+                                        <input type="number" placeholder="" id="number-range-d3ef"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="0" max="1000"
+                                               step="1" value="0">
+                                    </div>
+                                </div>
+                                <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-32">
+                                    <label for="range-8280" class="u-label">Задержка 3</label>
+                                    <div class="u-input-row" data-value="0">
+                                        <input value="0" min="0" max="1000" step="1" type="range" placeholder=""
+                                               id="range-8280" name="range-4" class="u-input u-range">
+                                        <input type="number" placeholder="" id="number-range-8280"
+                                               class="u-input u-input-rectangle u-range u-text-black" min="0" max="1000"
+                                               step="1" value="0">
+                                    </div>
+                                </div>
+                                <div class="u-form-checkbox u-form-group u-label-top u-form-group-33">
+                                    <input type="checkbox" id="checkbox-a569" name="checkbox" value="On"
+                                           class="u-field-input">
+                                    <label for="checkbox-a569" class="u-field-label">Флажок</label>
+                                </div>
+                                <div class="u-align-left u-form-group u-form-submit u-label-top">
+                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                                    <input type="submit" value="submit" class="u-form-control-hidden">
+                                </div>
+                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
+                                    sent.
+                                </div>
+                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
+                                    fix errors then try again.
+                                </div>
+                                <input type="hidden" value="" name="recaptchaResponse">
+                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="u-align-center u-clearfix u-gradient u-section-2" id="sec-0342">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <h3 class="u-align-center u-text u-text-default u-text-1">Введите текст</h3>
+        <div class="u-align-center u-expanded-width-xs u-form u-form-1">
+            <form action="https://forms.nicepagesrv.com/v2/form/process"
+                  class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email"
+                  name="form">
+                <div class="u-form-group u-form-message u-label-none">
+                    <label for="message-3b9a" class="u-label">Message</label>
+                    <textarea placeholder="Enter your message" rows="4" cols="50" id="message-3b9a" name="message"
+                              class="u-input u-input-rectangle" required=""></textarea>
+                </div>
+                <div class="u-align-left u-form-group u-form-submit">
+                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                    <input type="submit" value="submit" class="u-form-control-hidden">
+                </div>
+                <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
+                <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then
+                    try again.
+                </div>
+                <input type="hidden" value="" name="recaptchaResponse">
+                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+            </form>
+        </div>
+    </div>
+</section>
+<section class="u-clearfix u-gradient u-section-3" id="sec-de86">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <h3 class="u-align-center u-text u-text-default u-text-1">Результат синтеза</h3>
+        <p class="u-align-center u-text u-text-default u-text-2">Пожалуйста, подождите..</p>
+        <img class="u-align-center u-image u-image-contain u-image-default u-preserve-proportions u-image-1"
+             th:src="@{/images/cupertino_activity_indicator.gif}" alt="" data-image-width="512" data-image-height="512">
+    </div>
+</section>
+<section class="skrollable u-align-center u-clearfix u-gradient u-section-4" id="sec-6726">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <h3 class="u-align-center u-text u-text-default u-text-1">Результат синтеза</h3>
+        <p class="u-align-center u-text u-text-default u-text-2">Запись успешно синтезирована</p>
+        <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1" data-animation-name=""
+             data-animation-duration="0" data-animation-direction="">
+            <audio style="width: 75%" controls=""></audio>
+        </div>
+        <a href="https://nicepage.com/k/hacker-html-templates"
+           class="u-btn u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-1">Скачать<br>
+        </a>
+    </div>
+</section>
+
+
+<footer class="u-align-center u-clearfix u-footer u-gradient u-footer" id="sec-3e8e">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-align-left u-small-text u-text u-text-body-alt-color u-text-variant u-text-1">Волгоградский
+            государственный университет<br>Институт математики и информационных технологий<br>Кафедра информационных
+            систем и компьютерного моделирования<br>
+        </p>
+        <p class="u-align-left u-small-text u-text u-text-body-alt-color u-text-variant u-text-2">Разработка системы
+            синтеза речи<br>
+        </p>
+        <p class="u-align-left u-small-text u-text u-text-body-alt-color u-text-variant u-text-3">Студент группы
+            ПрИб-191<br>Сергеев Роман
+        </p>
+        <img class="u-align-right u-image u-image-circle u-image-contain u-preserve-proportions u-image-1"
+             th:src="@{/images/logo-no-background.png}" alt="" data-image-width="1000" data-image-height="1000">
+    </div>
+</footer>
+
+</body>
+</html>

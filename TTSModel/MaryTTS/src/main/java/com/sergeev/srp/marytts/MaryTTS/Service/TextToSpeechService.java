@@ -34,28 +34,29 @@ public class TextToSpeechService {
         String voice = text.getMaryTTSParameters().getVoices().toArray()[0].toString();
         marytts.setVoice(voice);
         log.info("Установлен голос {}", voice);
-        String style = text.getMaryTTSParameters().getStyle()[0];
-        if (style != null && !style.equals("")) {
-            marytts.setStyle(style);
-            log.info("Установлен стиль {}", style);
-        }
 
-        if (text.getMaryTTSParameters().isUseEffects()) {
-            StringBuilder effectsStringBuilder = new StringBuilder();
 
-            for (Effect effect : text.getMaryTTSParameters().getAudioEffects()) {
-                effectsStringBuilder.append(effect.getName());
-                effectsStringBuilder.append("(");
+        StringBuilder effectsStringBuilder = new StringBuilder();
 
-                effect.getEffect().forEach((k, v) -> {
-                    effectsStringBuilder.append(k).append(":").append(v).append(",");
-                });
-                effectsStringBuilder.deleteCharAt(effectsStringBuilder.length() - 1);
-                effectsStringBuilder.append(")+");
+        for (Effect effect : text.getMaryTTSParameters().getAudioEffects()) {
+            if (!effect.isActive()) {
+                continue;
             }
+            effectsStringBuilder.append(effect.getName());
+            effectsStringBuilder.append("(");
+
+            effect.getEffect().forEach((k, v) -> {
+                effectsStringBuilder.append(k).append(":").append(v).append(",");
+            });
+            effectsStringBuilder.deleteCharAt(effectsStringBuilder.length() - 1);
+            effectsStringBuilder.append(")+");
+        }
+        if (effectsStringBuilder.length() > 0) {
             effectsStringBuilder.deleteCharAt(effectsStringBuilder.length() - 1);
             log.info("Собрана строка дополнительных эффектов: {}", effectsStringBuilder.toString());
             marytts.setAudioEffects(effectsStringBuilder.toString());
+        } else {
+            log.info("Эффекты не получены");
         }
 
 
@@ -96,7 +97,7 @@ public class TextToSpeechService {
                 }
                 values.put(parameterValue[0], Double.parseDouble(parameterValue[1]));
             }
-            effects.add(new Effect(e.getName(), values));
+            effects.add(new Effect(e.getName(), values, false));
         }
 
 
@@ -105,7 +106,6 @@ public class TextToSpeechService {
         parameters.setVoices(marytts.getAvailableVoices());
         parameters.setInputTypes(marytts.getAvailableInputTypes());
         parameters.setOutputTypes(marytts.getAvailableOutputTypes());
-        parameters.setStyle(style.getValues());
 
 
         return parameters;

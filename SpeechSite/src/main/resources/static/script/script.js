@@ -1,177 +1,109 @@
-function synthesizeRequest (){
+function synthesizeRequest() {
     var system = $('#systemSelector li.active').attr('id');
 
     $('.is-invalid').removeClass('is-invalid');
 
-    if(typeof system == "undefined"){
-        $('#systemSelector').addClass('is-invalid');
-        return;
-    }
-    
-    switch(system){
-        case 'mary-tts-select' :
-            system = "MaryTTS";
-            var maryTTSParameters = {};
-            if(typeof $("#mary-tts-locale-select").find(':selected').val() == "undefined"){
-                $("#mary-tts-locale-select").addClass('is-invalid');
-                return;
-            }
+    //
+    // if (typeof system == "undefined") {
+    //     $('#systemSelector').addClass('is-invalid');
+    //     return;
+    // }
 
-            if(typeof $("#mary-tts-voice-select").find(':selected').val() == "undefined"){
-                $("#mary-tts-voice-select").addClass('is-invalid');
-                return;
-            }
-            maryTTSParameters.locales = [$("#mary-tts-locale-select").find(':selected').val()]
-            maryTTSParameters.voices = [$("#mary-tts-voice-select").find(':selected').val()]
-            maryTTSParameters.style = [$('input[name=flexRadioDefaultMaryTTS]:checked').val()]
-            if($('#flexSwitchCheckDefaultMaryTTS').is(":checked")){
-            maryTTSParameters.useEffects = true;
-            var volume = {};
-            volume.name = "Volume";
-            volume.effect = {};
-            volume.effect.amount = $("#maryeffectVolumeamount").val();
+    system = "MaryTTS";
+    var maryTTSParameters = {};
+    // if (typeof $("#mary-tts-locale-select").find(':selected').val() == "undefined") {
+    //     $("#mary-tts-locale-select").addClass('is-invalid');
+    //     return;
+    // }
+    //
+    // if (typeof $("#mary-tts-voice-select").find(':selected').val() == "undefined") {
+    //     $("#mary-tts-voice-select").addClass('is-invalid');
+    //     return;
+    // }
+    maryTTSParameters.locales = [$("#select-0ef8").find(':selected').val()]
+    maryTTSParameters.voices = [$("#select-voice").find(':selected').val()]
 
-            var TractScaler = {};
-            TractScaler.name = "TractScaler";
-            TractScaler.effect = {};
-            TractScaler.effect.amount = $("#maryeffectTractScaleramount").val();
-
-            var F0Scale = {};
-            F0Scale.name = "F0Scale";
-            F0Scale.effect = {};
-            F0Scale.effect.f0Scale = $("#maryeffectF0Scalef0Scale").val();
+    maryTTSParameters.useEffects = true;
+    var volume = {};
+    volume.name = "Volume";
+    volume.effect = {};
+    volume.effect.amount = $("#maryeffectVolumeamount").val();
+    volume.isActive = $("#maryeffectVolumeamountcheck").is(":checked");
 
 
-            var F0Add = {};
-            F0Add.name = "F0Add";
-            F0Add.effect = {};
-            F0Add.effect.f0Add = $("#maryeffectF0Addf0Add").val();
+    var F0Scale = {};
+    F0Scale.name = "F0Scale";
+    F0Scale.effect = {};
+    F0Scale.effect.f0Scale = $("#maryeffectF0Scalef0Scale").val();
+    F0Scale.isActive = $("#maryeffectF0Scalef0Scalecheck").is(":checked");
 
-            var Rate = {};
-            Rate.name = "Rate";
-            Rate.effect = {};
-            Rate.effect.durScale = $("#maryeffectRatedurScale").val();
+    var F0Add = {};
+    F0Add.name = "F0Add";
+    F0Add.effect = {};
+    F0Add.effect.f0Add = $("#maryeffectF0Addf0Add").val();
+    F0Add.isActive = $("#maryeffectF0Addf0Addcheck").is(":checked");
 
-            var Robot = {};
-            Robot.name = "Robot";
-            Robot.effect = {};
-            Robot.effect.amount = $("#maryeffectRobotamount").val();
+    var Rate = {};
+    Rate.name = "Rate";
+    Rate.effect = {};
+    Rate.effect.durScale = $("#maryeffectRatedurScale").val();
+    Rate.isActive = $("#maryeffectRatedurScalecheck").is(":checked");
 
-            var Whisper = {};
-            Whisper.name = "Whisper";
-            Whisper.effect = {};
-            Whisper.effect.amount = $("#maryeffectWhisperamount").val();
+    var Robot = {};
+    Robot.name = "Robot";
+    Robot.effect = {};
+    Robot.effect.amount = $("#maryeffectRobotamount").val();
+    Robot.isActive = $("#maryeffectRobotamountcheck").is(":checked");
 
-            var Stadium = {};
-            Stadium.name = "Stadium";
-            Stadium.effect = {};
-            Stadium.effect.amount = $("#maryeffectStadiumamount").val();
+    var Whisper = {};
+    Whisper.name = "Whisper";
+    Whisper.effect = {};
+    Whisper.effect.amount = $("#maryeffectWhisperamount").val();
+    Whisper.isActive = $("#maryeffectWhisperamountcheck").is(":checked");
 
-            var Chorus = {};
-            Chorus.name = "Chorus";
-            Chorus.effect = {};
-            Chorus.effect.amp1 = $("#maryeffectChorusamp1").val();
-            Chorus.effect.amp3 = $("#maryeffectChorusamp3").val();
-            Chorus.effect.amp2 = $("#maryeffectChorusamp2").val();
-            Chorus.effect.delay3 = $("#maryeffectChorusdelay3").val();
-            Chorus.effect.delay1 = $("#maryeffectChorusdelay1").val();
-            Chorus.effect.delay2 = $("#maryeffectChorusdelay2").val();
+    var Stadium = {};
+    Stadium.name = "Stadium";
+    Stadium.effect = {};
+    Stadium.effect.amount = $("#maryeffectStadiumamount").val();
+    Stadium.isActive = $("#maryeffectStadiumamountcheck").is(":checked");
 
-             var FIRFilter = {};
-             FIRFilter.name = "FIRFilter";
-             FIRFilter.effect = {};
-             FIRFilter.effect.fc2 = $("#maryeffectFIRFilterfc2").val();
-             FIRFilter.effect.fc1 = $("#maryeffectFIRFilterfc1").val();
-             FIRFilter.effect.type = $("#maryeffectFIRFiltertype").val();
+    var Chorus = {};
+    Chorus.name = "Chorus";
+    Chorus.effect = {};
+    Chorus.effect.amp1 = $("#maryeffectChorusamp1").val();
+    Chorus.effect.amp3 = $("#maryeffectChorusamp3").val();
+    Chorus.effect.amp2 = $("#maryeffectChorusamp2").val();
+    Chorus.effect.delay3 = $("#maryeffectChorusdelay3").val();
+    Chorus.effect.delay1 = $("#maryeffectChorusdelay1").val();
+    Chorus.effect.delay2 = $("#maryeffectChorusdelay2").val();
+    Chorus.isActive = $("#checkbox-a569").is(":checked");
 
-                maryTTSParameters.audioEffects = [
-                    volume, TractScaler, F0Scale, F0Add, Rate, Robot, Whisper, Stadium, Chorus, FIRFilter
-                ]
-            }
 
-        break;
-        case "hmm-select" : {
-            break;
-        }
-    }
+    maryTTSParameters.audioEffects = [
+        volume, F0Scale, F0Add, Rate, Robot, Whisper, Stadium, Chorus
+    ]
+
     var text = $("#textInput").val();
-    if (text == "") {
-        $("#textInput").addClass('is-invalid');
-        return;
-    }
+    // if (text == "") {
+    //     $("#textInput").addClass('is-invalid');
+    //     return;
+    // }
 
     $.ajax({
         url: location.pathname + '/synthesize',
         method: 'post',
         headers: {
             "Content-Type": "application/json; odata=verbose"
-          },
+        },
         data: JSON.stringify({
             "text": text,
             "system": system,
             "maryTTSParameters": maryTTSParameters
         }),
         processData: false,
-        success: function(data){
-            var src = location.pathname.replace("synthesis","") + "synthesized/" + data;
-    	     $("#audioOutput").attr("src", src);
+        success: function (data) {
+            var src = location.pathname.replace("synthesis", "") + "synthesized/" + data;
+            $("#audioOutput").attr("src", src);
         }
     });
 }
-
-function getParameters(system){
-
-    var marySelect = $('#mary-tts-select');
-    var hmmSelect = $('#hmm-select');
-
-    marySelect.removeClass('active');
-    hmmSelect.removeClass('active');
-
-
-    var hostname = window.location.origin;
-        $.ajax({
-            url: location.pathname + '/system/parameters',
-            method: 'get',
-            data: jQuery.param({system: system}),
-            processData: false,
-            success: function(data){
-
-                 $('#modelSettings').html(data);
-
-                 switch(system) {
-                         case "MaryTTS" :
-                             marySelect.addClass('active');
-
-                            $("#toggle-mary-tts-button").click(function(){
-                                  $("#collapseExample").collapse('toggle'); // toggle collapse
-                             });
-                             $('#mary-tts-locale-select').on('change', function (e) {
-                                 var locale = $('#mary-tts-locale-select').find(':selected').val();
-                                 $.ajax({
-                                         url: location.pathname + "/system/parameters/voices",
-                                         method: 'get',
-                                         data: jQuery.param({locale: locale,
-                                                             system: 'MaryTTS'}),
-                                         success: function(data){
-                                             $('#voice-select').html(data);
-                                         }
-                                     });
-                             });
-
-                             break;
-
-                         case "HMM" :
-                             hmmSelect.addClass('active');
-                             break;
-                     }
-            }
-        });
-}
-
-$('#mary-tts-select').click(function (clickEvent) {
-    getParameters('MaryTTS')
-});
-
-$('#hmm-select').click(function (clickEvent) {
-    getParameters('HMM')
-});

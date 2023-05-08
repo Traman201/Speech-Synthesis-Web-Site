@@ -10,6 +10,7 @@
     <link rel="stylesheet" th:href="@{/css/speech-synthesis.css}" media="screen">
     <script class="u-script" type="text/javascript" th:src="@{/script/jquery.js}" defer=""></script>
     <script class="u-script" type="text/javascript" th:src="@{script/nicepage.js}" defer=""></script>
+    <script type="text/javascript" th:src="@{/script/script.js}"></script>
     <meta name="generator" content="Nicepage 5.9.6, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet"
@@ -96,10 +97,12 @@
                 <div class="u-form-group u-form-select u-form-group-1">
                     <label for="select-0ef8" class="u-label">Выберите язык</label>
                     <div class="u-form-select-wrapper">
-                        <select id="select-0ef8" name="language" class="u-input u-input-rectangle">
-                            <option value="Item 1" data-calc="">Item 1</option>
-                            <option value="Item 2" data-calc="">Item 2</option>
-                            <option value="Item 3" data-calc="">Item 3</option>
+                        <select id="select-0ef8" name="language" class="u-input u-input-rectangle"
+                                onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
+                            <option value="" selected disabled hidden>Выберите язык</option>
+                            <th:block th:each="locale : ${locales}">
+                                <option th:text="${locale.getNameForSite()}" th:value="${locale.getName()}"></option>
+                            </th:block>
                         </select>
                         <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px"
@@ -107,32 +110,39 @@
                     </div>
                 </div>
                 <div class="u-form-group u-form-select u-form-group-2">
-                    <label for="select-5003" class="u-label">Выберите голос</label>
+                    <label for="select-voice" class="u-label">Выберите голос</label>
                     <div class="u-form-select-wrapper">
-                        <select id="select-5003" name="voice" class="u-input u-input-rectangle">
-                            <option value="Item 1" data-calc="">Item 1</option>
-                            <option value="Item 2" data-calc="">Item 2</option>
-                            <option value="Item 3" data-calc="">Item 3</option>
+                        <select id="select-voice" name="voice" class="u-input u-input-rectangle">
+                            <option value="" selected disabled hidden>Выберите язык</option>
                         </select>
                         <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px"
                              viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve"><polygon class="st0" points="8,12 2,4 14,4 "></polygon></svg>
                     </div>
                 </div>
-                <div class="u-form-checkbox u-form-group u-form-group-3">
-                    <input type="checkbox" id="checkbox-0992" name="checkbox" value="On" class="u-field-input">
-                    <label for="checkbox-0992" class="u-field-label">Использовать дополнительные параметры</label>
-                </div>
-                <div class="u-align-left u-form-group u-form-submit">
-                    <a href="#" class="u-btn u-btn-submit u-button-style u-btn-1">Выполнить</a>
-                    <input type="submit" value="submit" class="u-form-control-hidden">
-                </div>
-                <div class="u-form-send-message u-form-send-success"> Спасибо! Ваше сообщение отправлено.</div>
-                <div class="u-form-send-error u-form-send-message"> Отправка не удалась. Пожалуйста, исправьте ошибки и
-                    попробуйте еще раз.
-                </div>
-                <input type="hidden" value="" name="recaptchaResponse">
-                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
+                <script th:inline="javascript">
+
+                    function dynamicdropdown(n) {
+                        /*<![CDATA[*/
+
+                        const locales = /*[[${locales}]]*/ '';
+
+                        const length = locales.length;
+
+                        for (let i = 0; i < length; i++) {
+                            if (n === locales[i].name) {
+                                let select = $("#select-voice");
+                                select.empty();
+                                const voiceNum = locales[i].voices.length;
+                                select.append('<option value="" selected disabled hidden>Выберите голос</option>')
+                                for (let j = 0; j < voiceNum; j++) {
+                                    select.append('<option value="' + locales[i].voices[j].name + '">' + locales[i].voices[j].nameForSite + "</option>");
+                                }
+                            }
+                        }
+                        /*]]>*/
+                    }
+                </script>
             </form>
         </div>
         <div class="u-accordion u-collapsed-by-default u-accordion-1">
@@ -157,30 +167,19 @@
                                     <label for="number-9dc2" class="u-label">Громкость</label>
                                     <div class="u-input-row" data-value="50">
                                         <input value="50" min="0" max="100" step="1" type="range" placeholder=""
-                                               id="number-9dc2" name="number"
+                                               name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
-                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                        <input type="number" placeholder="" id="maryeffectVolumeamount"
                                                class="u-input u-input-rectangle u-range u-text-black" min="0" max="100"
                                                step="1" value="50">
                                     </div>
                                 </div>
                                 <div class="u-form-checkbox u-form-group u-label-top">
-                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                    <input type="checkbox" id="maryeffectVolumeamountcheck" name="checkbox" value="On"
                                            class="u-field-input">
-                                    <label for="checkbox-98c2" class="u-field-label">Использовать громкость</label>
+                                    <label for="maryeffectVolumeamountcheck" class="u-field-label">Использовать
+                                        громкость</label>
                                 </div>
-                                <div class="u-align-left u-form-group u-form-submit u-label-top">
-                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                                    <input type="submit" value="submit" class="u-form-control-hidden">
-                                </div>
-                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
-                                    sent.
-                                </div>
-                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
-                                    fix errors then try again.
-                                </div>
-                                <input type="hidden" value="" name="recaptchaResponse">
-                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
                             </form>
                         </div>
                         <div class="u-expanded-width u-form u-form-3">
@@ -188,34 +187,24 @@
                                   class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
                                   style="padding: 15px;" source="email" name="form">
                                 <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-8">
-                                    <label for="number-9dc2" class="u-label">Множитель основного тона</label>
+                                    <label for="maryeffectF0Scalef0Scale" class="u-label">Множитель основного
+                                        тона</label>
                                     <div class="u-input-row" data-value="1">
                                         <input value="1" min="0" max="10" step="1" type="range" placeholder=""
-                                               id="number-9dc2" name="number"
+                                               name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
-                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                        <input type="number" placeholder="" id="maryeffectF0Scalef0Scale"
                                                class="u-input u-input-rectangle u-range u-text-black" min="0" max="10"
                                                step="1" value="1">
                                     </div>
                                 </div>
                                 <div class="u-form-checkbox u-form-group u-label-top">
-                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                    <input type="checkbox" id="maryeffectF0Scalef0Scalecheck" name="checkbox" value="On"
                                            class="u-field-input">
-                                    <label for="checkbox-98c2" class="u-field-label">Использовать множитель основного
+                                    <label for="maryeffectF0Scalef0Scalecheck" class="u-field-label">Использовать
+                                        множитель основного
                                         тона</label>
                                 </div>
-                                <div class="u-align-left u-form-group u-form-submit u-label-top">
-                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                                    <input type="submit" value="submit" class="u-form-control-hidden">
-                                </div>
-                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
-                                    sent.
-                                </div>
-                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
-                                    fix errors then try again.
-                                </div>
-                                <input type="hidden" value="" name="recaptchaResponse">
-                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
                             </form>
                         </div>
                         <div class="u-expanded-width u-form u-form-4">
@@ -223,34 +212,23 @@
                                   class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
                                   style="padding: 15px;" source="email" name="form">
                                 <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-11">
-                                    <label for="number-9dc2" class="u-label">Увеличение основного тона</label>
+                                    <label for="maryeffectF0Addf0Add" class="u-label">Увеличение основного тона</label>
                                     <div class="u-input-row" data-value="50">
                                         <input value="50" min="0" max="100" step="1" type="range" placeholder=""
-                                               id="number-9dc2" name="number"
+                                               name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
-                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                        <input type="number" placeholder="" id="maryeffectF0Addf0Add"
                                                class="u-input u-input-rectangle u-range u-text-black" min="0" max="100"
                                                step="1" value="50">
                                     </div>
                                 </div>
                                 <div class="u-form-checkbox u-form-group u-label-top">
-                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                    <input type="checkbox" id="maryeffectF0Addf0Addcheck" name="checkbox" value="On"
                                            class="u-field-input">
-                                    <label for="checkbox-98c2" class="u-field-label">Использовать увеличение основного
+                                    <label for="maryeffectF0Addf0Addcheck" class="u-field-label">Использовать увеличение
+                                        основного
                                         тона</label>
                                 </div>
-                                <div class="u-align-left u-form-group u-form-submit u-label-top">
-                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                                    <input type="submit" value="submit" class="u-form-control-hidden">
-                                </div>
-                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
-                                    sent.
-                                </div>
-                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
-                                    fix errors then try again.
-                                </div>
-                                <input type="hidden" value="" name="recaptchaResponse">
-                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
                             </form>
                         </div>
                         <div class="u-form u-form-5">
@@ -258,33 +236,22 @@
                                   class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
                                   style="padding: 15px;" source="email" name="form">
                                 <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-14">
-                                    <label for="number-9dc2" class="u-label">Темп</label>
+                                    <label for="maryeffectRatedurScale" class="u-label">Темп</label>
                                     <div class="u-input-row" data-value="1">
                                         <input value="1" min="0" max="10" step="1" type="range" placeholder=""
-                                               id="number-9dc2" name="number"
+                                               name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
-                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                        <input type="number" placeholder="" id="maryeffectRatedurScale"
                                                class="u-input u-input-rectangle u-range u-text-black" min="0" max="10"
                                                step="1" value="1">
                                     </div>
                                 </div>
                                 <div class="u-form-checkbox u-form-group u-label-top">
-                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                    <input type="checkbox" id="maryeffectRatedurScalecheck" name="checkbox" value="On"
                                            class="u-field-input">
-                                    <label for="checkbox-98c2" class="u-field-label">Использовать темп</label>
+                                    <label for="maryeffectRatedurScalecheck" class="u-field-label">Использовать
+                                        темп</label>
                                 </div>
-                                <div class="u-align-left u-form-group u-form-submit u-label-top">
-                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                                    <input type="submit" value="submit" class="u-form-control-hidden">
-                                </div>
-                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
-                                    sent.
-                                </div>
-                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
-                                    fix errors then try again.
-                                </div>
-                                <input type="hidden" value="" name="recaptchaResponse">
-                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
                             </form>
                         </div>
                         <div class="u-expanded-width u-form u-form-6">
@@ -292,33 +259,22 @@
                                   class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
                                   style="padding: 15px;" source="email" name="form">
                                 <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-17">
-                                    <label for="number-9dc2" class="u-label">Робот</label>
+                                    <label for="maryeffectRobotamount" class="u-label">Робот</label>
                                     <div class="u-input-row" data-value="0">
                                         <input value="0" min="0" max="100" step="1" type="range" placeholder=""
-                                               id="number-9dc2" name="number"
+                                               name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
-                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                        <input type="number" placeholder="" id="maryeffectRobotamount"
                                                class="u-input u-input-rectangle u-range u-text-black" min="0" max="100"
                                                step="1" value="0">
                                     </div>
                                 </div>
                                 <div class="u-form-checkbox u-form-group u-label-top">
-                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                    <input type="checkbox" id="maryeffectRobotamountcheck" name="checkbox" value="On"
                                            class="u-field-input">
-                                    <label for="checkbox-98c2" class="u-field-label">Использовать эффект робота</label>
+                                    <label for="maryeffectRobotamountcheck" class="u-field-label">Использовать эффект
+                                        робота</label>
                                 </div>
-                                <div class="u-align-left u-form-group u-form-submit u-label-top">
-                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                                    <input type="submit" value="submit" class="u-form-control-hidden">
-                                </div>
-                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
-                                    sent.
-                                </div>
-                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
-                                    fix errors then try again.
-                                </div>
-                                <input type="hidden" value="" name="recaptchaResponse">
-                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
                             </form>
                         </div>
                         <div class="u-expanded-width u-form u-form-7">
@@ -326,33 +282,22 @@
                                   class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
                                   style="padding: 15px;" source="email" name="form">
                                 <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-20">
-                                    <label for="number-9dc2" class="u-label">Шепот</label>
+                                    <label for="maryeffectWhisperamount" class="u-label">Шепот</label>
                                     <div class="u-input-row" data-value="0">
                                         <input value="0" min="0" max="100" step="1" type="range" placeholder=""
-                                               id="number-9dc2" name="number"
+                                               name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
-                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                        <input type="number" placeholder="" id="maryeffectWhisperamount"
                                                class="u-input u-input-rectangle u-range u-text-black" min="0" max="100"
                                                step="1" value="0">
                                     </div>
                                 </div>
                                 <div class="u-form-checkbox u-form-group u-label-top">
-                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                    <input type="checkbox" id="maryeffectWhisperamountcheck" name="checkbox" value="On"
                                            class="u-field-input">
-                                    <label for="checkbox-98c2" class="u-field-label">Использовать эффект шепота</label>
+                                    <label for="maryeffectWhisperamountcheck" class="u-field-label">Использовать эффект
+                                        шепота</label>
                                 </div>
-                                <div class="u-align-left u-form-group u-form-submit u-label-top">
-                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                                    <input type="submit" value="submit" class="u-form-control-hidden">
-                                </div>
-                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
-                                    sent.
-                                </div>
-                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
-                                    fix errors then try again.
-                                </div>
-                                <input type="hidden" value="" name="recaptchaResponse">
-                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
                             </form>
                         </div>
                         <div class="u-expanded-width u-form u-form-8">
@@ -360,34 +305,22 @@
                                   class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
                                   style="padding: 15px;" source="email" name="form">
                                 <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-23">
-                                    <label for="number-9dc2" class="u-label">Стадион</label>
+                                    <label for="maryeffectStadiumamount" class="u-label">Стадион</label>
                                     <div class="u-input-row" data-value="0">
                                         <input value="0" min="0" max="100" step="1" type="range" placeholder=""
-                                               id="number-9dc2" name="number"
+                                               name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
-                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                        <input type="number" placeholder="" id="maryeffectStadiumamount"
                                                class="u-input u-input-rectangle u-range u-text-black" min="0" max="100"
                                                step="1" value="0">
                                     </div>
                                 </div>
                                 <div class="u-form-checkbox u-form-group u-label-top">
-                                    <input type="checkbox" id="checkbox-98c2" name="checkbox" value="On"
+                                    <input type="checkbox" id="maryeffectStadiumamountcheck" name="checkbox" value="On"
                                            class="u-field-input">
-                                    <label for="checkbox-98c2" class="u-field-label">Использовать эффект
+                                    <label for="maryeffectStadiumamountcheck" class="u-field-label">Использовать эффект
                                         стадиона</label>
                                 </div>
-                                <div class="u-align-left u-form-group u-form-submit u-label-top">
-                                    <a href="#" class="u-border-none u-btn u-btn-submit u-button-style">Submit</a>
-                                    <input type="submit" value="submit" class="u-form-control-hidden">
-                                </div>
-                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
-                                    sent.
-                                </div>
-                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
-                                    fix errors then try again.
-                                </div>
-                                <input type="hidden" value="" name="recaptchaResponse">
-                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
                             </form>
                         </div>
                         <div class="u-expanded-width u-form u-form-9">
@@ -401,7 +334,7 @@
                                         <input value="0" min="-1" max="1" step="0.1" type="range" placeholder=""
                                                id="number-9dc2" name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
-                                        <input type="number" placeholder="" id="number-number-9dc2"
+                                        <input type="number" placeholder="" id="maryeffectChorusamp1"
                                                class="u-input u-input-rectangle u-range u-text-black" min="-1" max="1"
                                                step="0.1" value="0">
                                     </div>
@@ -411,7 +344,7 @@
                                     <div class="u-input-row" data-value="0">
                                         <input value="0" min="-1" max="1" step="0.1" type="range" placeholder=""
                                                id="range-4505" name="range" class="u-input u-range">
-                                        <input type="number" placeholder="" id="number-range-4505"
+                                        <input type="number" placeholder="" id="maryeffectChorusamp2"
                                                class="u-input u-input-rectangle u-range u-text-black" min="-1" max="1"
                                                step="0.1" value="0">
                                     </div>
@@ -419,9 +352,9 @@
                                 <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-29">
                                     <label for="range-9022" class="u-label">Усиление 3</label>
                                     <div class="u-input-row" data-value="0">
-                                        <input value="0" min="-1" max="1" step="1" type="range" placeholder=""
+                                        <input value="0" min="-1" max="1" step="0.1" type="range" placeholder=""
                                                id="range-9022" name="range-1" class="u-input u-range">
-                                        <input type="number" placeholder="" id="number-range-9022"
+                                        <input type="number" placeholder="" id="maryeffectChorusamp3"
                                                class="u-input u-input-rectangle u-range u-text-black" min="-1" max="1"
                                                step="1" value="0">
                                     </div>
@@ -431,7 +364,7 @@
                                     <div class="u-input-row" data-value="0">
                                         <input value="0" min="0" max="1000" step="1" type="range" placeholder=""
                                                id="range-e47e" name="range-2" class="u-input u-range">
-                                        <input type="number" placeholder="" id="number-range-e47e"
+                                        <input type="number" placeholder="" id="maryeffectChorusdelay1"
                                                class="u-input u-input-rectangle u-range u-text-black" min="0" max="1000"
                                                step="1" value="0">
                                     </div>
@@ -441,7 +374,7 @@
                                     <div class="u-input-row" data-value="0">
                                         <input value="0" min="0" max="1000" step="1" type="range" placeholder=""
                                                id="range-d3ef" name="range-3" class="u-input u-range">
-                                        <input type="number" placeholder="" id="number-range-d3ef"
+                                        <input type="number" placeholder="" id="maryeffectChorusdelay2"
                                                class="u-input u-input-rectangle u-range u-text-black" min="0" max="1000"
                                                step="1" value="0">
                                     </div>
@@ -451,7 +384,7 @@
                                     <div class="u-input-row" data-value="0">
                                         <input value="0" min="0" max="1000" step="1" type="range" placeholder=""
                                                id="range-8280" name="range-4" class="u-input u-range">
-                                        <input type="number" placeholder="" id="number-range-8280"
+                                        <input type="number" placeholder="" id="maryeffectChorusdelay3"
                                                class="u-input u-input-rectangle u-range u-text-black" min="0" max="1000"
                                                step="1" value="0">
                                     </div>
@@ -459,20 +392,8 @@
                                 <div class="u-form-checkbox u-form-group u-label-top u-form-group-33">
                                     <input type="checkbox" id="checkbox-a569" name="checkbox" value="On"
                                            class="u-field-input">
-                                    <label for="checkbox-a569" class="u-field-label">Флажок</label>
+                                    <label for="checkbox-a569" class="u-field-label">Использовать хорус</label>
                                 </div>
-                                <div class="u-align-left u-form-group u-form-submit u-label-top">
-                                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                                    <input type="submit" value="submit" class="u-form-control-hidden">
-                                </div>
-                                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been
-                                    sent.
-                                </div>
-                                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please
-                                    fix errors then try again.
-                                </div>
-                                <input type="hidden" value="" name="recaptchaResponse">
-                                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
                             </form>
                         </div>
                     </div>
@@ -489,20 +410,16 @@
                   class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email"
                   name="form">
                 <div class="u-form-group u-form-message u-label-none">
-                    <label for="message-3b9a" class="u-label">Message</label>
-                    <textarea placeholder="Enter your message" rows="4" cols="50" id="message-3b9a" name="message"
+                    <label for="textInput" class="u-label">Текст</label>
+                    <textarea id="textInput" placeholder="Enter your message" rows="4" cols="50"
+                              name="message"
                               class="u-input u-input-rectangle" required=""></textarea>
                 </div>
-                <div class="u-align-left u-form-group u-form-submit">
-                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                    <input type="submit" value="submit" class="u-form-control-hidden">
+                <div class="u-align-left u-form-group">
+                    <button type="button" onclick="synthesizeRequest()" class="u-btn u-button-style" id="submit-btn">
+                        Отправить
+                    </button>
                 </div>
-                <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
-                <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then
-                    try again.
-                </div>
-                <input type="hidden" value="" name="recaptchaResponse">
-                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
             </form>
         </div>
     </div>
@@ -521,7 +438,7 @@
         <p class="u-align-center u-text u-text-default u-text-2">Запись успешно синтезирована</p>
         <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1" data-animation-name=""
              data-animation-duration="0" data-animation-direction="">
-            <audio style="width: 75%" controls=""></audio>
+            <audio id="audioOutput" style="width: 75%" controls=""></audio>
         </div>
         <a href="https://nicepage.com/k/hacker-html-templates"
            class="u-btn u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-1">Скачать<br>

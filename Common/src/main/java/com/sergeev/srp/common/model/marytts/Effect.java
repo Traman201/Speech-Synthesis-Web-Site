@@ -17,6 +17,8 @@ public class Effect {
 
     Map<String, Double> effect;
 
+    boolean isActive;
+
     @Override
     public String toString() {
         return "Effect{" +

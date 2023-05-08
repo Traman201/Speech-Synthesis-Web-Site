@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -13,9 +12,7 @@ import java.util.Set;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MaryTTSParameters {
-    private boolean useEffects = false;
     private List<Effect> audioEffects;
-    private String[] style;
     private Set<Locale> locales;
     private Set<String> voices;
     private Set<String> inputTypes;
@@ -24,9 +21,7 @@ public class MaryTTSParameters {
     @Override
     public String toString() {
         return "MaryTTSParameters{" +
-                "useEffects=" + useEffects +
                 ", audioEffects=" + audioEffects +
-                ", style=" + Arrays.toString(style) +
                 ", locales=" + locales +
                 ", voices=" + voices +
                 ", inputTypes=" + inputTypes +

@@ -5,6 +5,7 @@ import com.sergeev.srp.common.model.marytts.MaryTTSParameters;
 import com.sergeev.srp.site.entity.mary.MaryTTSLocale;
 import com.sergeev.srp.site.service.AudioHandler;
 import com.sergeev.srp.site.service.tts.MaryTTS;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +42,11 @@ public class SpeechSynthesisController {
     }
 
     @PostMapping(value = "/synthesize")
-    public @ResponseBody String requestSynthesis(@RequestBody TextToSpeech textToSpeech) {
+    public @ResponseBody String requestSynthesis(@RequestBody TextToSpeech textToSpeech, HttpSession session) {
         log.info("Получен запрос на синтез с текстом: {}", textToSpeech);
         textToSpeech = maryTTS.synthesize(textToSpeech);
         log.info("Получен ответ от модуля синтеза: {}", textToSpeech);
-        return audioHandler.saveAudio(textToSpeech);
+        return audioHandler.saveAudio(textToSpeech, session);
 
     }
 

@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Value("${synthesis.audio-path}")
     String filePath;
 
-    @Value(("${synthesis.audio-resource-handler}"))
+    @Value("${synthesis.audio-resource-handler}")
     String handler;
 
     @Override

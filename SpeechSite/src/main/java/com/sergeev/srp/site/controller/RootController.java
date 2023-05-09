@@ -10,6 +10,6 @@ public class RootController {
 
     @GetMapping
     public String redirectToMain() {
-        return "redirect:synthesis";
+        return "site/index";
     }
 }

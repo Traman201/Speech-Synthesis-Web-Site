@@ -6,10 +6,10 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>История</title>
-    <link rel="stylesheet" href="../../static/css/nicepage.css" media="screen">
-    <link rel="stylesheet" href="../../static/css/history.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
+    <link rel="stylesheet" th:href="@{/css/history.css}" media="screen">
+    <script class="u-script" type="text/javascript" th:src="@{/script/jquery.js}" defer=""></script>
+    <script class="u-script" type="text/javascript" th:src="@{/script/nicepage.js}" defer=""></script>
     <meta name="generator" content="Nicepage 5.9.6, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -30,7 +30,7 @@
 <header class="u-clearfix u-gradient u-header u-header" id="sec-8c91">
     <div class="u-clearfix u-sheet u-sheet-1">
         <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="1000" data-image-height="378">
-            <img src="../../../../../../../../../../Documents/Nicepage%20Templates/speechsynhtesis/images/logo-no-background.png"
+            <img th:src="@{/images/logo-no-background.png}"
                  class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" data-responsive-from="MD">
@@ -58,11 +58,15 @@
                     </li>
                     <li class="u-nav-item"><a
                             class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                            href="speech-synthesis.html" style="padding: 10px 20px;"> Синтез речи</a>
+                            th:href="@{/synthesis}" style="padding: 10px 20px;">Синтез речи</a>
                     </li>
                     <li class="u-nav-item"><a
                             class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                            href="История.html" style="padding: 10px 20px;">История</a>
+                            th:href="@{/hmm}" style="padding: 10px 20px;">СММ</a>
+                    </li>
+                    <li class="u-nav-item"><a
+                            class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                            href="#" style="padding: 10px 20px;">История</a>
                     </li>
                 </ul>
             </div>
@@ -73,10 +77,13 @@
                         <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                             <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Главная.html">Главная</a>
                             </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="speech-synthesis.html">
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/synthesis}">
                                 Синтез речи</a>
                             </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="История.html">История</a>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/hmm}">
+                                СММ</a>
+                            </li>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">История</a>
                             </li>
                         </ul>
                     </div>
@@ -138,21 +145,10 @@
             ПрИб-191<br>Сергеев Роман
         </p>
         <img class="u-align-right u-image u-image-circle u-image-contain u-preserve-proportions u-image-1"
-             src="../../../../../../../../../../Documents/Nicepage%20Templates/speechsynhtesis/images/logo-black.png"
+             th:src="@{/images/logo-black.png}"
              alt="" data-image-width="1000" data-image-height="1000">
     </div>
 </footer>
-<section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/html5-template" target="_blank">
-        <span>HTML5 Template</span>
-    </a>
-    <p class="u-text">
-        <span>created with</span>
-    </p>
-    <a class="u-link" href="https://nicepage.one" target="_blank">
-        <span>Best Free Website Builder</span>
-    </a>.
-</section>
 
 </body>
 </html>

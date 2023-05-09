@@ -3,7 +3,7 @@ function synthesizeRequest() {
     $('.is-invalid').removeClass('is-invalid');
 
 
-    system = "MaryTTS";
+    let system = "MaryTTS";
     var maryTTSParameters = {};
     if (typeof $("#select-0ef8").find(':selected').val() == "undefined") {
         showModal('Не выбран язык', 'Ошибка')

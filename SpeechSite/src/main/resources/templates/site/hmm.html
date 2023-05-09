@@ -9,7 +9,8 @@
     <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
     <link rel="stylesheet" th:href="@{/css/hmm.css}" media="screen">
     <script class="u-script" type="text/javascript" th:src="@{/script/jquery.js}" defer=""></script>
-    <script class="u-script" type="text/javascript" th:src="@{nicepage.js}" defer=""></script>
+    <script class="u-script" type="text/javascript" th:src="@{/script/nicepage.js}" defer=""></script>
+    <script type="text/javascript" th:src="@{/script/hmm_script.js}"></script>
     <meta name="generator" content="Nicepage 5.9.6, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet"
@@ -67,7 +68,7 @@
                     </li>
                     <li class="u-nav-item"><a
                             class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                            href="История.html" style="padding: 10px 20px;">История</a>
+                            href="history.html" style="padding: 10px 20px;">История</a>
                     </li>
                 </ul>
             </div>
@@ -81,7 +82,7 @@
                             <li class="u-nav-item"><a class="u-button-style u-nav-link" href="speech-synthesis.html">
                                 Синтез речи</a>
                             </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="История.html">История</a>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="history.html">История</a>
                             </li>
                         </ul>
                     </div>
@@ -102,9 +103,10 @@
                     <label for="select-0ef8" class="u-label">Выберите модель</label>
                     <div class="u-form-select-wrapper">
                         <select id="select-0ef8" name="language" class="u-input u-input-rectangle">
-                            <option value="Item 1" data-calc="">Item 1</option>
-                            <option value="Item 2" data-calc="">Item 2</option>
-                            <option value="Item 3" data-calc="">Item 3</option>
+                            <option value="" selected disabled hidden>Выберите модель</option>
+                            <th:bloch th:each="model : ${models}">
+                                <option th:value="${model.name}" th:text="${model.getNameForSite()}">Item 1</option>
+                            </th:bloch>
                         </select>
                         <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px"
@@ -114,23 +116,18 @@
                 <div class="u-form-group u-form-textarea u-form-group-2">
                     <label for="textarea-4b2c" class="u-label">Введите текст</label>
                     <textarea rows="4" cols="50" id="textarea-4b2c" name="textarea" class="u-input u-input-rectangle"
-                              required=""></textarea>
+                              required="" maxlength="100"></textarea>
                 </div>
-                <div class="u-align-left u-form-group u-form-submit">
-                    <a href="#" class="u-btn u-btn-submit u-button-style u-btn-1">Выполнить</a>
-                    <input type="submit" value="submit" class="u-form-control-hidden">
+                <div class="u-align-left u-form-group">
+                    <button type="button" onclick="synthesizeRequest()" class="u-btn u-button-style" id="submit-btn">
+                        Отправить
+                    </button>
                 </div>
-                <div class="u-form-send-message u-form-send-success"> Спасибо! Ваше сообщение отправлено.</div>
-                <div class="u-form-send-error u-form-send-message"> Отправка не удалась. Пожалуйста, исправьте ошибки и
-                    попробуйте еще раз.
-                </div>
-                <input type="hidden" value="" name="recaptchaResponse">
-                <input type="hidden" name="formServices" value="c2768dfe01eaebb5752f3d532b5872c2">
             </form>
         </div>
     </div>
 </section>
-<section class="u-clearfix u-gradient u-section-2" id="sec-de86">
+<section class="u-clearfix u-gradient u-section-2" id="sec-result-wait" style="display: none">
     <div class="u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-center u-text u-text-default u-text-1">Результат обработки</h3>
         <p class="u-align-center u-text u-text-default u-text-2">Пожалуйста, подождите..</p>
@@ -139,11 +136,12 @@
              alt="" data-image-width="512" data-image-height="512">
     </div>
 </section>
-<section class="skrollable u-align-center u-clearfix u-gradient u-section-3" id="sec-6726">
+<section class="skrollable u-align-center u-clearfix u-gradient u-section-3" id="sec-result" style="display: none">
     <div class="u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-center u-text u-text-default u-text-1">Результат обработки</h3>
         <p class="u-align-center u-text u-text-default u-text-2">Обработка текста успешно проведена</p>
-        <blockquote class="u-align-center u-border-8 u-border-black u-text u-text-default u-text-3">Пример цитаты. Lorem
+        <blockquote class="u-align-center u-border-8 u-border-black u-text u-text-default u-text-3" id="hmm-result">
+            Пример цитаты. Lorem
             ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.
         </blockquote>
     </div>

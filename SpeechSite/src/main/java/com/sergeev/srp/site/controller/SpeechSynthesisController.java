@@ -3,7 +3,7 @@ package com.sergeev.srp.site.controller;
 import com.sergeev.srp.common.model.TextToSpeech;
 import com.sergeev.srp.common.model.marytts.MaryTTSParameters;
 import com.sergeev.srp.site.entity.mary.MaryTTSLocale;
-import com.sergeev.srp.site.service.AudioHandler;
+import com.sergeev.srp.site.service.RequestHandler;
 import com.sergeev.srp.site.service.tts.MaryTTS;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
@@ -24,7 +24,7 @@ public class SpeechSynthesisController {
     MaryTTS maryTTS;
 
     @Autowired
-    AudioHandler audioHandler;
+    RequestHandler audioHandler;
 
     @GetMapping
     public String mainView(Model model) {

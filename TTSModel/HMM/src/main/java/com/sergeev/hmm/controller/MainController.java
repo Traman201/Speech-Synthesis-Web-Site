@@ -3,7 +3,7 @@ package com.sergeev.hmm.controller;
 import com.sergeev.hmm.service.HmmService;
 import com.sergeev.srp.common.model.TextToSpeech;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +19,9 @@ public class MainController {
     @Autowired
     private HmmService hmmService;
 
-    @GetMapping
-    public String transcribe(@RequestBody TextToSpeech text) throws IOException, ParserConfigurationException, SAXException {
-        return hmmService.transcribe(text);
+    @PostMapping
+    public TextToSpeech transcribe(@RequestBody TextToSpeech text) throws IOException, ParserConfigurationException, SAXException {
+        text.setTranscription(hmmService.transcribe(text));
+        return text;
     }
 }

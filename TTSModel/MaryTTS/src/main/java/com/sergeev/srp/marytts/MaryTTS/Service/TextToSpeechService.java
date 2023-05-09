@@ -39,7 +39,7 @@ public class TextToSpeechService {
         StringBuilder effectsStringBuilder = new StringBuilder();
 
         for (Effect effect : text.getMaryTTSParameters().getAudioEffects()) {
-            if (!effect.isActive()) {
+            if (!effect.getIsActive()) {
                 continue;
             }
             effectsStringBuilder.append(effect.getName());
@@ -50,6 +50,7 @@ public class TextToSpeechService {
             });
             effectsStringBuilder.deleteCharAt(effectsStringBuilder.length() - 1);
             effectsStringBuilder.append(")+");
+            log.info("Получен эффект " + effect.getName());
         }
         if (effectsStringBuilder.length() > 0) {
             effectsStringBuilder.deleteCharAt(effectsStringBuilder.length() - 1);

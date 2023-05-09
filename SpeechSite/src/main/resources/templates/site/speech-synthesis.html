@@ -8,6 +8,7 @@
     <title> Синтез речи</title>
     <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
     <link rel="stylesheet" th:href="@{/css/speech-synthesis.css}" media="screen">
+    <link rel="stylesheet" th:href="@{/css/modal.css}" media="screen">
     <script class="u-script" type="text/javascript" th:src="@{/script/jquery.js}" defer=""></script>
     <script class="u-script" type="text/javascript" th:src="@{script/nicepage.js}" defer=""></script>
     <script type="text/javascript" th:src="@{/script/script.js}"></script>
@@ -166,7 +167,7 @@
                                 <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-5">
                                     <label for="number-9dc2" class="u-label">Громкость</label>
                                     <div class="u-input-row" data-value="50">
-                                        <input value="50" min="0" max="100" step="1" type="range" placeholder=""
+                                        <input value="1" min="0" max="10" step="0.1" type="range" placeholder=""
                                                name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
                                         <input type="number" placeholder="" id="maryeffectVolumeamount"
@@ -190,7 +191,7 @@
                                     <label for="maryeffectF0Scalef0Scale" class="u-label">Множитель основного
                                         тона</label>
                                     <div class="u-input-row" data-value="1">
-                                        <input value="1" min="0" max="10" step="1" type="range" placeholder=""
+                                        <input value="1" min="0" max="10" step="0.1" type="range" placeholder=""
                                                name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
                                         <input type="number" placeholder="" id="maryeffectF0Scalef0Scale"
@@ -214,7 +215,7 @@
                                 <div class="u-form-group u-form-number u-form-number-layout-range-number u-label-top u-form-group-11">
                                     <label for="maryeffectF0Addf0Add" class="u-label">Увеличение основного тона</label>
                                     <div class="u-input-row" data-value="50">
-                                        <input value="50" min="0" max="100" step="1" type="range" placeholder=""
+                                        <input value="0" min="-100" max="100" step="1" type="range" placeholder=""
                                                name="number"
                                                class="u-input u-input-rectangle u-range u-text-black">
                                         <input type="number" placeholder="" id="maryeffectF0Addf0Add"
@@ -424,7 +425,7 @@
         </div>
     </div>
 </section>
-<section class="u-clearfix u-gradient u-section-3" id="sec-de86">
+<section class="u-clearfix u-gradient u-section-3" id="sec-result-wait" style="display: none">
     <div class="u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-center u-text u-text-default u-text-1">Результат синтеза</h3>
         <p class="u-align-center u-text u-text-default u-text-2">Пожалуйста, подождите..</p>
@@ -432,7 +433,7 @@
              th:src="@{/images/cupertino_activity_indicator.gif}" alt="" data-image-width="512" data-image-height="512">
     </div>
 </section>
-<section class="skrollable u-align-center u-clearfix u-gradient u-section-4" id="sec-6726">
+<section class="skrollable u-align-center u-clearfix u-gradient u-section-4" id="sec-result" style="display: none">
     <div class="u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-center u-text u-text-default u-text-1">Результат синтеза</h3>
         <p class="u-align-center u-text u-text-default u-text-2">Запись успешно синтезирована</p>

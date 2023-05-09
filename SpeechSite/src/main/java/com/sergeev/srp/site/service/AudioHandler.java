@@ -13,6 +13,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -32,7 +33,7 @@ public class AudioHandler {
             InputStream b_in = new ByteArrayInputStream(textToSpeech.getAudio());
             AudioInputStream stream = new AudioInputStream(b_in, format,
                     textToSpeech.getAudio().length);
-            File file = new File(audioFolderPath + "test.wav");
+            File file = new File(audioFolderPath + "test" + UUID.randomUUID() + ".wav");
             AudioSystem.write(stream, AudioFileFormat.Type.WAVE, file);
             log.info("Файл сохранен: {}", file.getPath());
 

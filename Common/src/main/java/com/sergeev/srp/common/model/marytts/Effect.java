@@ -17,13 +17,14 @@ public class Effect {
 
     Map<String, Double> effect;
 
-    boolean isActive;
+    Boolean isActive;
 
     @Override
     public String toString() {
         return "Effect{" +
                 "name='" + name + '\'' +
                 ", effect=" + effect +
+                ", active=" + isActive +
                 '}';
     }
 }

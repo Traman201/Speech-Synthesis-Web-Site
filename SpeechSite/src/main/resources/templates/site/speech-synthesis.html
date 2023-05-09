@@ -8,7 +8,6 @@
     <title> Синтез речи</title>
     <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
     <link rel="stylesheet" th:href="@{/css/speech-synthesis.css}" media="screen">
-    <link rel="stylesheet" th:href="@{/css/modal.css}" media="screen">
     <script class="u-script" type="text/javascript" th:src="@{/script/jquery.js}" defer=""></script>
     <script class="u-script" type="text/javascript" th:src="@{script/nicepage.js}" defer=""></script>
     <script type="text/javascript" th:src="@{/script/script.js}"></script>
@@ -32,7 +31,7 @@
 <body class="u-body u-xl-mode" data-lang="ru">
 <header class="u-clearfix u-gradient u-header u-header" id="sec-8c91">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="1000" data-image-height="378">
+        <a href="#" class="u-image u-logo u-image-1" data-image-width="1000" data-image-height="378">
             <img th:src="@{/images/logo-no-background.png}" class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" data-responsive-from="MD">
@@ -60,7 +59,11 @@
                     </li>
                     <li class="u-nav-item"><a
                             class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                            href="speech-synthesis.html" style="padding: 10px 20px;"> Синтез речи</a>
+                            href="#" style="padding: 10px 20px;"> Синтез речи</a>
+                    </li>
+                    <li class="u-nav-item"><a
+                            class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                            th:href="@{/hmm}" style="padding: 10px 20px;">СММ</a>
                     </li>
                     <li class="u-nav-item"><a
                             class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"

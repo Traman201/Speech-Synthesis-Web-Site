@@ -6,10 +6,12 @@ import com.sergeev.srp.common.model.marytts.MaryTTSParameters;
 import com.sergeev.srp.site.entity.mary.MaryTTSLocale;
 import com.sergeev.srp.site.entity.mary.MaryTTSVoice;
 import com.sergeev.srp.site.repository.LocaleRepository;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,7 +22,7 @@ public class MaryTTS implements ModuleCommunicator {
 
     private final Logger log = LoggerFactory.getLogger(MaryTTS.class);
 
-    private final RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     private MaryTTSParameters parameters;
 
@@ -30,8 +32,22 @@ public class MaryTTS implements ModuleCommunicator {
     @Value("${mary-tts.module-path}")
     private String defaultUrl;
 
+    @Value("${mary-tts.user}")
+    private String user;
+
+    @Value("${mary-tts.pwd}")
+    private String pwd;
+
     public MaryTTS() {
-        restTemplate = new RestTemplate();
+
+    }
+
+    @Override
+    @PostConstruct
+    public void initialize() {
+        restTemplate = new RestTemplateBuilder()
+                .basicAuthentication(user, pwd)
+                .build();
         parameters = null;
     }
 
@@ -59,4 +75,5 @@ public class MaryTTS implements ModuleCommunicator {
         log.info("Получены доступные голоса для языка {} : {}", locale, voices);
         return voices;
     }
+
 }

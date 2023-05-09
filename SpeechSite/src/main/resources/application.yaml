@@ -5,6 +5,12 @@ synthesis:
   audio-resource-handler: /synthesized/
 mary-tts:
   module-path: http://127.0.0.1:8080/mary-tts/
+  user: siteusr
+  pwd: awikhR2#L8zan~K
+hmm:
+  module-path: http://127.0.0.1:8080/hmm/
+  user: siteusr
+  pwd: awikhR2#L8zan~K
 spring:
   config:
     activate:

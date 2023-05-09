@@ -6,10 +6,10 @@
     <meta name="keywords" content="MaryTTS, FreeTTS">
     <meta name="description" content="">
     <title>СММ</title>
-    <link rel="stylesheet" href="../../static/css/nicepage.css" media="screen">
-    <link rel="stylesheet" href="../../static/css/hmm.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
+    <link rel="stylesheet" th:href="@{/css/hmm.css}" media="screen">
+    <script class="u-script" type="text/javascript" th:src="@{/script/jquery.js}" defer=""></script>
+    <script class="u-script" type="text/javascript" th:src="@{nicepage.js}" defer=""></script>
     <meta name="generator" content="Nicepage 5.9.6, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet"
@@ -30,8 +30,8 @@
 <body class="u-body u-xl-mode" data-lang="ru">
 <header class="u-clearfix u-gradient u-header u-header" id="sec-8c91">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="1000" data-image-height="378">
-            <img src="../../../../../../../../../../Documents/Nicepage%20Templates/speechsynhtesis/images/logo-no-background.png"
+        <a href="#" class="u-image u-logo u-image-1" data-image-width="1000" data-image-height="378">
+            <img th:src="@{/images/logo-no-background.png}"
                  class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" data-responsive-from="MD">
@@ -59,7 +59,11 @@
                     </li>
                     <li class="u-nav-item"><a
                             class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                            href="speech-synthesis.html" style="padding: 10px 20px;"> Синтез речи</a>
+                            th:href="@{/synthesis}" style="padding: 10px 20px;"> Синтез речи</a>
+                    </li>
+                    <li class="u-nav-item"><a
+                            class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                            th:href="@{/hmm}" style="padding: 10px 20px;">СММ</a>
                     </li>
                     <li class="u-nav-item"><a
                             class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
@@ -131,7 +135,7 @@
         <h3 class="u-align-center u-text u-text-default u-text-1">Результат обработки</h3>
         <p class="u-align-center u-text u-text-default u-text-2">Пожалуйста, подождите..</p>
         <img class="u-align-center u-image u-image-contain u-image-default u-preserve-proportions u-image-1"
-             src="../../../../../../../../../../Documents/Nicepage%20Templates/speechsynhtesis/images/cupertino_activity_indicator.gif"
+             th:src="@{/images/cupertino_activity_indicator.gif}"
              alt="" data-image-width="512" data-image-height="512">
     </div>
 </section>
@@ -159,21 +163,10 @@
             ПрИб-191<br>Сергеев Роман
         </p>
         <img class="u-align-right u-image u-image-circle u-image-contain u-preserve-proportions u-image-1"
-             src="../../../../../../../../../../Documents/Nicepage%20Templates/speechsynhtesis/images/logo-black.png"
+             th:src="@{/images/logo-black.png}"
              alt="" data-image-width="1000" data-image-height="1000">
     </div>
 </footer>
-<section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/css-templates" target="_blank">
-        <span>CSS Templates</span>
-    </a>
-    <p class="u-text">
-        <span>created with</span>
-    </p>
-    <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
-        <span>HTML Builder</span>
-    </a>.
-</section>
 
 </body>
 </html>

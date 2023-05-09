@@ -74,7 +74,7 @@ public class RequestHandler {
 
         phonemes.setPhonemes(textToSpeech.getTranscription());
         phonemes.setTime(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));
-        phonemes.setSystemName(Systems.MaryTTS);
+        phonemes.setSystemName(Systems.HMM);
         phonemes.setRawText(textToSpeech.getText());
         phonemes.setSessionId(session.getId());
 

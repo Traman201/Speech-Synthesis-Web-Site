@@ -53,12 +53,15 @@
                         <td class="u-border-1 u-border-grey-15 u-table-cell" th:text="${request.getSystemName()}"></td>
                         <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${request.getTime()}"></td>
                         <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${request.getRawText()}"></td>
-                        <th:block th:switch="${request.getSystemName()}">
-                            <td th:case="'HMM'" th:text="${request.phonemes}"></td>
-                            <td th:case="'MaryTTS'">
-                                <a th:href="/synthesized/ + ${request.filePath}" th:text="${request.filePath}"></a>
-                            </td>
-                        </th:block>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">
+                            <th:block th:switch="${request.getSystemName()}">
+                                <p th:case="'HMM'" th:text="${request.phonemes}"></p>
+
+                                <a th:case="'MaryTTS'" th:href="/synthesized/ + ${request.filePath}"
+                                   th:text="${request.filePath}"></a>
+                            </th:block>
+                        </td>
+
                     </tr>
                 </th:block>
 

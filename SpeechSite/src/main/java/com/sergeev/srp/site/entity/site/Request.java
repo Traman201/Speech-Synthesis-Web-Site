@@ -1,10 +1,7 @@
 package com.sergeev.srp.site.entity.site;
 
 import com.sergeev.srp.common.model.enums.Systems;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +15,7 @@ public class Request {
 
     private Systems systemName;
 
+    @Column(columnDefinition = "TEXT")
     private String rawText;
 
     private String time;

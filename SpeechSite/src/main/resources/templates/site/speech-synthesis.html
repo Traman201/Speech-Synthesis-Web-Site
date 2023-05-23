@@ -56,7 +56,7 @@
                     <label for="select-voice" class="u-label">Выберите голос</label>
                     <div class="u-form-select-wrapper">
                         <select id="select-voice" name="voice" class="u-input u-input-rectangle">
-                            <option value="" selected disabled hidden>Выберите язык</option>
+                            <option value="" selected disabled hidden>Выберите голос</option>
                         </select>
                         <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px"
@@ -379,11 +379,11 @@
             <form action="https://forms.nicepagesrv.com/v2/form/process"
                   class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email"
                   name="form">
-                <div class="u-form-group u-form-message u-label-none">
-                    <label for="textInput" class="u-label">Текст</label>
+                <div class="u-form-group u-form-message">
+                    <label for="textInput" class="u-label" id="textInputLabel">Символов: 0/500</label>
                     <textarea id="textInput" placeholder="Enter your message" rows="4" cols="50"
                               name="message"
-                              class="u-input u-input-rectangle" required=""></textarea>
+                              class="u-input u-input-rectangle" required="" maxlength="500"></textarea>
                 </div>
                 <div class="u-align-left u-form-group">
                     <button type="button" onclick="synthesizeRequest()" class="u-btn u-button-style" id="submit-btn">

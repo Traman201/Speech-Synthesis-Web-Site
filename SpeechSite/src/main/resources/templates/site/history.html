@@ -48,20 +48,23 @@
                 </tr>
                 </thead>
                 <tbody class="u-table-body">
-                <th:block th:each="request : ${requests}">
+                <th:block th:each="audio : ${audioList}">
                     <tr style="height: 65px;">
-                        <td class="u-border-1 u-border-grey-15 u-table-cell" th:text="${request.getSystemName()}"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${request.getTime()}"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${request.getRawText()}"></td>
+                        <td class="u-border-1 u-border-grey-15 u-table-cell" th:text="${audio.getSystemName()}"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${audio.getTime()}"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${audio.getRawText()}"></td>
                         <td class="u-border-1 u-border-grey-30 u-table-cell">
-                            <th:block th:switch="${request.getSystemName()}">
-                                <p th:case="'HMM'" th:text="${request.phonemes}"></p>
-
-                                <a th:case="'MaryTTS'" th:href="/synthesized/ + ${request.filePath}"
-                                   th:text="${request.filePath}"></a>
-                            </th:block>
+                            <a th:href="'/speech/synthesized/' + ${audio.filePath}"
+                               th:text="${audio.filePath}"></a>
                         </td>
-
+                    </tr>
+                </th:block>
+                <th:block th:each="phoneme : ${phonemeList}">
+                    <tr style="height: 65px;">
+                        <td class="u-border-1 u-border-grey-15 u-table-cell" th:text="${phoneme.getSystemName()}"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${phoneme.getTime()}"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${phoneme.getRawText()}"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${phoneme.phonemes}"></td>
                     </tr>
                 </th:block>
 

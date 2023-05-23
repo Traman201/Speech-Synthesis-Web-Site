@@ -1,7 +1,8 @@
 package com.sergeev.srp.site.controller;
 
 
-import com.sergeev.srp.site.entity.site.Request;
+import com.sergeev.srp.site.entity.site.Audio;
+import com.sergeev.srp.site.entity.site.Phonemes;
 import com.sergeev.srp.site.repository.AudioRepository;
 import com.sergeev.srp.site.repository.PhonemeRepository;
 import jakarta.servlet.http.HttpSession;
@@ -11,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,11 +29,11 @@ public class HistoryController {
 
     @GetMapping
     public String getHistory(Model model, HttpSession session) {
-        List<Request> requestList = new ArrayList<>();
-        requestList.addAll(audioRepository.findBySessionId(session.getId()));
-        requestList.addAll(phonemeRepository.findBySessionId(session.getId()));
+        List<Phonemes> phonemeList = phonemeRepository.findBySessionId(session.getId());
+        List<Audio> audioList = audioRepository.findBySessionId(session.getId());
 
-        model.addAttribute("requests", requestList);
+        model.addAttribute("phonemeList", phonemeList);
+        model.addAttribute("audioList", audioList);
         return "site/history";
 
     }

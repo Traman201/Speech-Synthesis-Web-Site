@@ -4,7 +4,7 @@ function synthesizeRequest() {
 
     let system = 'HMM';
     var hmmParameters = {};
-    if (typeof $("#select-0ef8").find(':selected').val() == "undefined") {
+    if ($("#select-0ef8").find(':selected').val() == "") {
         showModal('Не выбран язык', 'Ошибка')
         return;
     }
@@ -49,6 +49,7 @@ function synthesizeRequest() {
             $("#hmm-result").html(data);
         },
         error: function (jqXHR, exception) {
+            $("#sec-result-wait").attr("style", "display: none");
             showModal('Произошла ошибка во время обработки запроса. Проверьте правильность введенных данных и повторите попытку.', 'Ошибка')
         }
     });
@@ -56,4 +57,10 @@ function synthesizeRequest() {
 
 function showModal(text, header) {
     alert(text);
+}
+
+window.onload = function () {
+    $("#textarea-4b2c").keyup(function () {
+        $('#textInputLabel').html("Введите текст (Символов: " + $('#textarea-4b2c').val().length + "/100)")
+    });
 }

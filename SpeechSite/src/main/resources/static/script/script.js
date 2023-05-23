@@ -5,12 +5,12 @@ function synthesizeRequest() {
 
     let system = "MaryTTS";
     var maryTTSParameters = {};
-    if (typeof $("#select-0ef8").find(':selected').val() == "undefined") {
+    if ($("#select-0ef8").find(':selected').val() == "") {
         showModal('Не выбран язык', 'Ошибка')
         return;
     }
 
-    if (typeof $("#select-voice").find(':selected').val() == "undefined") {
+    if ($("#select-voice").find(':selected').val() == "") {
         showModal('Не выбран голос', 'Ошибка')
         return;
     }
@@ -82,6 +82,10 @@ function synthesizeRequest() {
         showModal('Не введен текст для синтеза', 'Ошибка')
         return;
     }
+    if (text.length > 500) {
+        showModal('Слишком много символов', 'Ошибка');
+        return;
+    }
     $("#sec-result").attr("style", "display: none");
     $("#sec-result-wait").removeAttr("style");
     $('html, body').animate({
@@ -111,6 +115,7 @@ function synthesizeRequest() {
             $("#audioOutput").attr("src", src);
         },
         error: function (jqXHR, exception) {
+            $("#sec-result-wait").attr("style", "display: none");
             showModal('Произошла ошибка во время обработки запроса. Проверьте правильность введенных данных и повторите попытку.', 'Ошибка')
         }
     });
@@ -118,4 +123,10 @@ function synthesizeRequest() {
 
 function showModal(text, header) {
     alert(text);
+}
+
+window.onload = function () {
+    $("#textInput").keyup(function () {
+        $('#textInputLabel').html("Символов: " + $('#textInput').val().length + "/500")
+    });
 }
